@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -17,6 +18,17 @@ body {
   background-attachment: fixed;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+hr {
+  border-color: rgba(255,255,255,0.08);
+  border-width: 1px;
+  margin: 0;
 }
 
 .shimmer {
@@ -60,4 +72,12 @@ body {
 @keyframes spin-slow {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.section-container {
+  max-width: 80rem; /* ~1280px, about half of a 26-inch 2560px screen */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
