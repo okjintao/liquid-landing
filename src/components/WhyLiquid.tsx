@@ -1,11 +1,39 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image'
 
+interface Benefit {
+  title: string;
+  description: string;
+  details: string;
+}
+
+const benefits: Benefit[] = [
+  {
+    title: "Pure Store of Value",
+    description: "Designed for long-term holding with no minting capability",
+    details: "LIQUID's fixed supply and burn mechanism ensure it becomes increasingly scarce over time, making it an ideal store of value."
+  },
+  {
+    title: "Sustainable Rewards",
+    description: "Earn HYPE rewards through Valve Controller Modules",
+    details: "Valve Controllers create sustainable reward streams while maintaining protocol stability through dynamic tax adjustments."
+  },
+  {
+    title: "Exit Protection",
+    description: "Tax-free exit queue for large holders",
+    details: "Large holders can exit tax-free through a FIFO-based queue system, with delays based on exit size to prevent market impact."
+  }
+];
+
 export default function WhyLiquid() {
+  const [showDetails, setShowDetails] = useState<number | null>(null);
+
   return (
     <section className="py-24">
-      {/* Why Liquid Section Container */}
       <div className="section-container">
-        <div className="px-[5%] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="px-4 sm:px-[5%] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Image Content */}
           <div className="flex justify-center items-center">
             <Image
@@ -17,18 +45,38 @@ export default function WhyLiquid() {
               priority
             />
           </div>
+          
           {/* Text Content */}
           <div className="flex flex-col items-center md:items-start justify-center text-center md:text-left">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-playfair">Why Liquid?</h2>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4 font-playfair max-w-xl">
-              Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.
-            </p>
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-playfair max-w-xl">
-              There are no team tokens, no venture allocation, and no roadmaps — only belief and participation.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 font-playfair">
+              Why <span className="text-cyan-300">Liquid</span>
+            </h2>
+            
+            <div className="space-y-8">
+              {benefits.map((benefit, index) => (
+                <div 
+                  key={index}
+                  className="group"
+                  onMouseEnter={() => setShowDetails(index)}
+                  onMouseLeave={() => setShowDetails(null)}
+                >
+                  <h3 className="text-xl font-bold mb-2 font-playfair text-cyan-200">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-300 mb-2">
+                    {benefit.description}
+                  </p>
+                  {showDetails === index && (
+                    <p className="text-gray-400 text-sm leading-relaxed animate-fade-in">
+                      {benefit.details}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 } 

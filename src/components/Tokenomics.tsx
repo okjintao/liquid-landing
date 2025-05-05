@@ -1,49 +1,66 @@
+'use client';
+
+import { useState } from 'react';
+
+interface Tokenomic {
+  title: string;
+  description: string;
+}
+
+const tokenomics: Tokenomic[] = [
+  {
+    title: "Initial Distribution",
+    description: "100% of supply seeded to Uniswap v3 LIQUID/HYPE pool"
+  },
+  {
+    title: "Tax Structure",
+    description: "Dynamic sell tax that increases on sells and decreases on buys"
+  },
+  {
+    title: "Fee Distribution",
+    description: "Initial 100% burned, then 90% burned and 10% to VCMs"
+  }
+];
+
 export default function Tokenomics() {
+  const [activeTokenomic, setActiveTokenomic] = useState<number | null>(null);
+
   return (
     <section className="py-24">
-      {/* Tokenomics Section Container */}
       <div className="section-container">
-        {/* Section Divider */}
-        <hr className="border-t border-white/10 mb-16" />
-        {/* Inset Content */}
-        <div className="px-[5%]">
-          {/* Heading */}
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 pt-8 font-playfair">Tokenomics</h2>
-          {/* Tokenomics Cards Grid */}
-          <div className="pt-4 pb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card 1 */}
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/5 shadow-lg transition-transform hover:-translate-y-1 hover:shadow-2xl duration-200">
-              <h3 className="text-2xl font-bold mb-3 font-playfair">Fixed Supply</h3>
-              <p className="text-lg text-gray-300 leading-relaxed font-playfair">
-                The total supply of Liquid was created at launch. No new tokens can ever be minted.
-              </p>
-            </div>
-            {/* Card 2 */}
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/5 shadow-lg transition-transform hover:-translate-y-1 hover:shadow-2xl duration-200">
-              <h3 className="text-2xl font-bold mb-3 font-playfair">Protocol-Owned Liquidity</h3>
-              <p className="text-lg text-gray-300 leading-relaxed font-playfair">
-                All tokens were placed into a single trading pool owned by the protocol itself.
-              </p>
-            </div>
-            {/* Card 3 */}
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/5 shadow-lg transition-transform hover:-translate-y-1 hover:shadow-2xl duration-200">
-              <h3 className="text-2xl font-bold mb-3 font-playfair">Dynamic Trading Tax</h3>
-              <p className="text-lg text-gray-300 leading-relaxed font-playfair">
-                A sell tax adjusts based on market activity — increasing with sells, decreasing with buys.
-              </p>
-            </div>
-            {/* Card 4 */}
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/5 shadow-lg transition-transform hover:-translate-y-1 hover:shadow-2xl duration-200">
-              <h3 className="text-2xl font-bold mb-3 font-playfair">Exit Queue</h3>
-              <p className="text-lg text-gray-300 leading-relaxed font-playfair">
-                Users can convert Liquid to Hype with no tax through a short waiting period.
-              </p>
-            </div>
+        <div className="px-4 sm:px-[5%]">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 font-playfair">
+            Tokenomics
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {tokenomics.map((tokenomic, index) => (
+              <div
+                key={index}
+                className="group relative p-6 transition-all duration-300"
+                onMouseEnter={() => setActiveTokenomic(index)}
+                onMouseLeave={() => setActiveTokenomic(null)}
+              >
+                <div className="relative z-10">
+                  <h3 className="text-xl font-bold mb-2 font-playfair text-cyan-200">
+                    {tokenomic.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {tokenomic.description}
+                  </p>
+                </div>
+                
+                {/* Subtle hover effect */}
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-r from-cyan-300/5 to-blue-300/5 rounded-lg transition-opacity duration-300 ${
+                    activeTokenomic === index ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              </div>
+            ))}
           </div>
         </div>
-        {/* Section Divider */}
-        <hr className="border-t border-white/10 mt-16" />
       </div>
     </section>
-  )
+  );
 } 

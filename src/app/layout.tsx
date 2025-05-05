@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Background from "@/components/Background";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Liquid - The final piece of the Hyperliquid ecosystem",
-  description: "Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.",
+  title: "Liquid",
+  description: "The final piece of the Hyperliquid ecosystem — a pure store of value.",
   openGraph: {
     title: "Liquid - The final piece of the Hyperliquid ecosystem",
     description: "Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.",
@@ -65,10 +66,13 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={inter.className}>
-        <main role="main" id="main-content" tabIndex={-1} aria-label="Main content">
-          {children}
-        </main>
+      <body className={`${inter.className} bg-black text-white min-h-screen`}>
+        <Background />
+        <div className="relative z-10">
+          <main role="main" id="main-content" tabIndex={-1} aria-label="Main content">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

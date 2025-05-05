@@ -1,10 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react';
+import Background from '@/components/Background';
 import Hero from '@/components/Hero'
 import WhyLiquid from '@/components/WhyLiquid'
 import Tokenomics from '@/components/Tokenomics'
 import ValveController from '@/components/ValveController'
+import ProtocolFeatures from '@/components/ProtocolFeatures'
 import Footer from '@/components/Footer'
 
 export default function Home() {
@@ -21,17 +23,16 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <Hero />
-      <div
-        ref={fadeRef}
-        className={`transition-opacity duration-1000 ease-out ${visible ? 'opacity-100' : 'opacity-0'}`}
-      >
+    <main className="relative min-h-screen">
+      <Background />
+      <div className="relative z-10">
+        <Hero />
         <WhyLiquid />
+        <ProtocolFeatures />
         <Tokenomics />
         <ValveController />
+        <Footer />
       </div>
-      <Footer />
     </main>
   );
 }
