@@ -138,7 +138,6 @@ hr {
     text-wrap: balance;
   }
 }
-
 /* Custom animations */
 @keyframes fadeIn {
   from {
@@ -220,3 +219,4 @@ hr {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(var(--color-primary), 0.5);
 }
+
