@@ -77,34 +77,30 @@ export default function Background() {
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number | undefined>(undefined);
   const timeRef = useRef<number>(0);
+  const lastScrollTime = useRef<number>(0);
   const [isLiquidMode, setIsLiquidMode] = useState(false);
   const [showValveButton, setShowValveButton] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const lastScrollTime = useRef<number>(0);
 
   useEffect(() => {
-    // Check URL for liquid mode parameter
     const params = new URLSearchParams(window.location.search);
     setIsLiquidMode(params.get('liquid') === 'true');
 
-    // Check if mobile
     const checkMobile = () => {
       setShowValveButton(window.innerWidth < 768);
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // Add keyboard shortcut (Alt + L)
     const handleKeyPress = (e: KeyboardEvent) => {
       if (e.altKey && e.key.toLowerCase() === 'l') {
         toggleLiquidMode();
       }
     };
 
-    // Handle scroll with debouncing
     const handleScroll = () => {
       const now = Date.now();
-      if (now - lastScrollTime.current < 16) return; // Limit to ~60fps
+      if (now - lastScrollTime.current < 16) return;
       lastScrollTime.current = now;
 
       const scrollY = window.scrollY;
@@ -185,7 +181,6 @@ export default function Background() {
     const drawParticle = (particle: Particle) => {
       if (!ctx) return;
       
-      // Smoother scroll-based opacity
       const scrollOpacity = Math.max(0, Math.pow(1 - scrollProgress * 1.5, 2));
       const particleOpacity = particle.opacity * scrollOpacity;
       
@@ -202,7 +197,6 @@ export default function Background() {
       const baseColor = COLORS[particle.color];
       const colorValues = baseColor.match(/[\d.]+/g) || ['255', '255', '255', '0.4'];
       
-      // Use fixed opacity values for consistent colors
       gradient.addColorStop(0, baseColor);
       gradient.addColorStop(0.3, `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.3)`);
       gradient.addColorStop(0.7, `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.1)`);
@@ -243,7 +237,6 @@ export default function Background() {
     const animate = () => {
       if (!ctx || !canvas) return;
 
-      // Use a fixed background color
       ctx.fillStyle = 'rgb(15, 23, 42)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 

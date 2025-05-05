@@ -6,7 +6,6 @@ import WhyLiquid from '@/components/WhyLiquid'
 import Tokenomics from '@/components/Tokenomics'
 import ValveController from '@/components/ValveController'
 import ProtocolFeatures from '@/components/ProtocolFeatures'
-import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -18,7 +17,6 @@ export default function Home() {
         <ProtocolFeatures />
         <Tokenomics />
         <ValveController />
-        <Footer />
       </div>
     </main>
   );

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Background from "@/components/Background";
+import RootLayoutClient from "@/components/RootLayoutClient";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Liquid",
-  description: "The final piece of the Hyperliquid ecosystem — a pure store of value.",
+  title: "Liquid - Decentralized Exchange Protocol",
+  description: "Liquid is a decentralized exchange protocol built on Ethereum, offering secure and efficient trading of digital assets.",
   openGraph: {
     title: "Liquid - The final piece of the Hyperliquid ecosystem",
     description: "Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Liquid",
     images: [
       {
-        url: "https://i.imgur.com/gR06Bjt.png",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Liquid Logo",
@@ -28,17 +28,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Liquid - The final piece of the Hyperliquid ecosystem",
     description: "Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.",
-    images: ["https://i.imgur.com/gR06Bjt.png"],
+    images: ["/twitter-image.png"],
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered." />
@@ -66,13 +66,10 @@ export default function RootLayout({
           `
         }} />
       </head>
-      <body className={`${inter.className} bg-black text-white min-h-screen`}>
-        <Background />
-        <div className="relative z-10">
-          <main role="main" id="main-content" tabIndex={-1} aria-label="Main content">
-            {children}
-          </main>
-        </div>
+      <body className={`${inter.className} bg-[var(--color-deep-ocean)] text-[var(--color-off-white)] min-h-screen antialiased`}>
+        <RootLayoutClient>
+          {children}
+        </RootLayoutClient>
       </body>
     </html>
   );

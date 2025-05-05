@@ -1,22 +1,20 @@
 'use client';
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import LiquidBlob3D from './LiquidBlob3D'
+
+interface Tooltips {
+  hype: string;
+  purr: string;
+  liquid: string;
+  ecosystem: string;
+}
 
 export default function Hero() {
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
   
-  // Generate more equally spaced rings, white border, decreasing opacity
-  const baseSize = 176; // px, roughly h-44/w-44
-  const ringCount = 6;
-  const ringGap = 20; // px between rings
-  const rings = Array.from({ length: ringCount }, (_, i) => ({
-    size: baseSize + i * ringGap,
-    opacity: 60 - i * 10, // 60, 50, 40, 30, 20, 10
-  }));
-
-  const tooltips = {
+  const tooltips: Tooltips = {
     hype: "HYPE is the governance token of the Hyperliquid ecosystem",
     purr: "PURR is the utility token powering the ecosystem",
     liquid: "LIQUID is the pure store of value, designed for long-term holding",
@@ -28,28 +26,9 @@ export default function Hero() {
       {/* Hero Section Container */}
       <div className="section-container">
         <div className="px-4 sm:px-[5%] text-center flex flex-col items-center justify-center min-h-[60vh] sm:min-h-[80vh]">
-          {/* Animated Logo and Equally Spaced Concentric Rings */}
+          {/* 3D Liquid Blob */}
           <div className="relative w-48 h-48 sm:w-80 sm:h-80 mx-auto mb-4 sm:mb-6 flex items-center justify-center">
-            <div className="absolute rounded-full w-full h-full bg-cyan-400 opacity-20 blur-2xl sm:blur-3xl animate-pulse"></div>
-            <div className="absolute inset-0 flex items-center justify-center animate-spin-slow">
-              {rings.map((ring, i) => (
-                <div
-                  key={i}
-                  style={{ width: ring.size, height: ring.size }}
-                  className={`absolute rounded-full border border-white opacity-${ring.opacity} scale-75 sm:scale-100`}
-                />
-              ))}
-            </div>
-            <div className="relative w-40 h-40 sm:w-40 sm:h-40 md:w-52 md:h-52">
-              <Image
-                src="https://i.imgur.com/gR06Bjt.png"
-                alt="Liquid Logo"
-                fill
-                className="shimmer animate-oscillate relative z-10 object-contain"
-                priority
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 160px, 208px"
-              />
-            </div>
+            <LiquidBlob3D />
           </div>
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 leading-tight tracking-tight font-playfair">
@@ -91,7 +70,7 @@ export default function Hero() {
           {/* Call to Action Buttons */}
           <div className="mt-8 sm:mt-12 mb-6 sm:mb-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
             <Link
-              href="#docs"
+              href="/docs"
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-black bg-gradient-to-r from-cyan-300 to-blue-200 shadow-lg hover:from-cyan-200 hover:to-blue-100 transition-colors font-playfair focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-black"
             >
               Read the Docs
