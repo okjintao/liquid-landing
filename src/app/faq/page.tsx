@@ -1,185 +1,161 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
+import Background from '@/components/Background';
 
-interface FAQ {
+interface FAQItem {
   question: string;
   answer: string;
-  category: 'basics' | 'protocol' | 'tokens' | 'technical';
 }
 
-const faqs: FAQ[] = [
+const faqs: FAQItem[] = [
   {
-    category: 'basics',
     question: "What is LIQUID?",
-    answer: "LIQUID is a token designed to reward long-term conviction. Unlike stablecoins, its price may fluctuate based on market conditions. It's intentionally under-engineered, focusing on trustlessness and transparency."
+    answer: "LIQUID is a pure store of value token within the Hyperliquid ecosystem. It's designed to maintain long-term value through a combination of fixed supply, dynamic tax mechanisms, and protocol-controlled liquidity."
   },
   {
-    category: 'basics',
-    question: "How is LIQUID different from other tokens?",
-    answer: "LIQUID is designed for long-term holding, not as a stablecoin. Its price can change, but it's built with mechanisms to protect long-term holders. The token has a fixed supply that can never be increased, and its price is determined by market dynamics."
+    question: "How does the dynamic sell tax work?",
+    answer: "The sell tax adjusts based on market conditions. It increases on sells and decreases on buys, with throttled adjustments and cooldown periods to prevent manipulation. This mechanism helps maintain price stability while discouraging excessive selling."
   },
   {
-    category: 'protocol',
-    question: "What are the key features of LIQUID?",
-    answer: "LIQUID features a fixed supply, transparent mechanics, and trustless protocol design. It's built to reward those who hold long-term, with mechanisms that protect against short-term speculation and market manipulation."
+    question: "What is the Fluid Management Unit (FMU)?",
+    answer: "The FMU is an immutable contract that manages protocol liquidity, fee claiming, and tax routing. All LP tokens are locked within this unit, ensuring that liquidity remains secure and controlled by the protocol."
   },
   {
-    category: 'protocol',
-    question: "What are Valve Controllers?",
-    answer: "Valve Controllers are special tokens that give holders governance rights in the protocol. They help maintain the system's balance and can participate in protocol decisions, making them an integral part of LIQUID's ecosystem."
+    question: "How do Valve Controller Modules (VCMs) work?",
+    answer: "VCMs are NFT-based access points that allow holders to create and manage reward streams. They earn HYPE rewards while helping maintain protocol stability through their management of liquidity flows."
   },
   {
-    category: 'tokens',
-    question: "How does LIQUID relate to HYPE and PURR?",
-    answer: "HYPE is the governance token of the Hyperliquid ecosystem, while PURR is a meme token. LIQUID serves as the ecosystem's long-term holding token. Each token has its distinct purpose: HYPE for governance, PURR for community engagement, and LIQUID for long-term holding."
+    question: "What is the tax-free exit queue?",
+    answer: "The exit queue is a FIFO-based system that allows users to convert LIQUID to HYPE tax-free. The delay period is based on the size of the exit, with larger exits requiring longer waiting periods to maintain protocol stability."
   },
   {
-    category: 'tokens',
-    question: "Can I convert LIQUID to other tokens?",
-    answer: "Yes, there's a special system that allows you to convert LIQUID to HYPE without paying taxes. This system uses a queue to ensure large conversions don't disrupt the market. However, remember that LIQUID is designed for long-term holding."
+    question: "How are fees distributed?",
+    answer: "Initially, 100% of LIQUID fees are burned. After reaching a benchmark, 90% of fees continue to be burned while 10% are distributed as HYPE rewards to VCM holders."
   },
   {
-    category: 'technical',
-    question: "How does the tax system work?",
-    answer: "The tax system automatically adjusts based on market activity. When there's more selling, the tax increases to protect long-term holders. When there's more buying, it decreases to encourage participation. This helps maintain LIQUID's long-term holding proposition."
+    question: "What is the total supply of LIQUID?",
+    answer: "LIQUID has a fixed total supply with no minting capability. The initial distribution was 100% seeded to the Uniswap v3 LIQUID/HYPE pool."
   },
   {
-    category: 'technical',
-    question: "What happens to the fees collected?",
-    answer: "Initially, all fees are burned, reducing the total supply. After certain conditions are met, most fees continue to be burned while a small portion goes to Valve Controller holders. This mechanism helps maintain LIQUID's long-term holding characteristics."
+    question: "How can I participate in the protocol?",
+    answer: "You can participate by holding LIQUID tokens, becoming a VCM holder to earn rewards, or providing liquidity to the LIQUID/HYPE pool. Each role contributes to the protocol's stability and growth."
   }
 ];
 
-export default function FAQ() {
-  const [expandedFaqs, setExpandedFaqs] = useState<Set<number>>(new Set());
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const element = document.getElementById('faq-section');
-    if (element) observer.observe(element);
-
-    return () => {
-      if (element) observer.unobserve(element);
-    };
-  }, []);
-
-  const toggleFaq = (index: number) => {
-    const newExpanded = new Set(expandedFaqs);
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index);
-    } else {
-      newExpanded.add(index);
-    }
-    setExpandedFaqs(newExpanded);
-  };
+export default function FAQPage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950">
-      <section id="faq-section" className="relative overflow-hidden">
-        {/* Section separator line */}
-        <div 
-          className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent transition-all duration-1000 ${
-            isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-          }`}
-        />
-
-        <div className="section-container pt-32 pb-24">
+    <main className="min-h-screen relative overflow-x-hidden">
+      <Background />
+      {/* Hero Section */}
+      <section className="relative pt-24 sm:pt-32 pb-12 sm:pb-16 overflow-hidden z-10">
+        <div className="section-container relative z-10">
           <div className="px-4 sm:px-[5%]">
-            <div className={`space-y-4 text-center transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <h1 className="text-4xl md:text-5xl font-bold font-playfair">
-                Frequently Asked <span className="text-cyan-300">Questions</span>
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-playfair text-liquid-off-white mb-4 sm:mb-6">
+                Frequently Asked{' '}
+                <span className="relative inline-block text-liquid-blue">
+                  Questions
+                  <span className="absolute left-0 right-0 -bottom-1 h-1 bg-gradient-to-r from-liquid-blue via-cyan-400 to-transparent rounded-full animate-pulse" style={{ opacity: 0.5 }} />
+                </span>
               </h1>
-              <div className={`w-20 h-px bg-gradient-to-r from-cyan-500/50 to-transparent mx-auto transition-all duration-1000 delay-300 ${
-                isVisible ? 'scale-x-100' : 'scale-x-0'
-              }`} />
+              <p className="text-neutral-200/70 text-sm sm:text-base font-sans font-medium mb-2">
+                Everything you need to know about the LIQUID Protocol
+              </p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="max-w-4xl mx-auto mt-12">
-              <div className="space-y-4">
+      {/* FAQ Section */}
+      <section className="relative py-6 sm:py-8 z-10">
+        <div className="section-container">
+          <div className="px-4 sm:px-[5%]">
+            <div className="max-w-3xl mx-auto">
+              <div className="space-y-3 sm:space-y-4">
                 {faqs.map((faq, index) => (
-                  <div 
-                    key={index} 
-                    className={`group relative p-6 bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl transition-all duration-300 hover:border-cyan-500/30 hover:bg-black/50 hover:shadow-lg hover:shadow-cyan-500/10 ${
-                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}
-                    style={{ transitionDelay: `${index * 100}ms` }}
+                  <div
+                    key={index}
+                    className="group border border-cyan-500/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-cyan-500/20 bg-gradient-to-b from-cyan-950/50 to-cyan-950/30"
                   >
                     <button
-                      onClick={() => toggleFaq(index)}
-                      className="w-full text-left flex items-center justify-between"
+                      className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left focus:outline-none hover:bg-cyan-950/40 transition-colors duration-200"
+                      onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     >
-                      <h3 className="text-xl font-bold font-playfair text-cyan-200 group-hover:text-cyan-100 transition-colors">
-                        {faq.question}
-                      </h3>
-                      <svg
-                        className={`w-5 h-5 text-cyan-400 transition-transform duration-300 ${
-                          expandedFaqs.has(index) ? 'rotate-180' : ''
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <div className="flex justify-between items-center gap-3 sm:gap-4">
+                        <h3 className="text-base sm:text-lg md:text-xl font-bold font-playfair text-neutral-200 group-hover:text-cyan-100 transition-colors duration-200">
+                          {faq.question}
+                        </h3>
+                        <svg
+                          className={`w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0 transition-all duration-300 ${
+                            openIndex === index ? 'rotate-180 scale-110' : ''
+                          }`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </div>
                     </button>
                     <div
-                      className={`mt-4 transition-all duration-300 ease-in-out ${
-                        expandedFaqs.has(index) ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                      }`}
+                      className={`px-4 sm:px-6 transition-all duration-300 ${
+                        openIndex === index ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'
+                      } overflow-hidden`}
                     >
-                      <p className="text-gray-300 text-sm leading-relaxed">
-                        {faq.answer}
-                      </p>
+                      <div className="pt-4 border-t border-cyan-500/10">
+                        <p className="text-neutral-300 font-sans text-sm leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-16 text-center">
-                <p className="text-gray-400 mb-6">
-                  Still have questions? Check out our detailed documentation or join our community.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    href="/docs"
-                    className="px-6 py-3 rounded-lg font-medium bg-cyan-500 text-white hover:bg-cyan-600 transition-colors"
-                  >
-                    Read Documentation
-                  </Link>
-                  <a
-                    href="https://t.me/hyperliquid"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-lg font-medium border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10 transition-colors"
-                  >
-                    Join Telegram
-                  </a>
-                </div>
+      {/* CTA Section */}
+      <section className="relative py-12 sm:py-16 z-10">
+        <div className="section-container">
+          <div className="px-4 sm:px-[5%]">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-xl sm:text-2xl font-bold font-playfair text-liquid-off-white mb-3 sm:mb-4">
+                Still have questions?
+              </h2>
+              <p className="text-neutral-200/70 font-sans mb-6 sm:mb-8">
+                Check out our detailed documentation or join our community for more information.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/docs"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-black bg-gradient-to-r from-cyan-300 to-blue-200 shadow-lg hover:from-cyan-200 hover:to-blue-100 transition-colors font-playfair focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-black"
+                >
+                  Read Documentation
+                </Link>
+                <Link
+                  href="https://t.me/hyperliquid"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-8 py-4 rounded-full font-bold border border-cyan-300 text-cyan-300 bg-transparent hover:bg-cyan-300 hover:text-black transition-all duration-300 hover:scale-105 font-playfair focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-black"
+                >
+                  Join Community
+                </Link>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom section separator */}
-        <div 
-          className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent transition-all duration-1000 ${
-            isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-          }`}
-        />
       </section>
-    </div>
+    </main>
   );
 } 

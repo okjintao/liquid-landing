@@ -3,7 +3,7 @@
 
 :root {
   /* Brand Colors */
-  --color-primary: 56, 189, 248;    /* #38BDF8 - Main brand color */
+  --color-primary: var(--color-liquid-blue);    /* #38BDF8 - Main brand color */
   --color-primary-light: 103, 232, 249;  /* #67E8F9 - Lighter accent */
   --color-primary-dark: 34, 211, 238;    /* #22D3EE - Darker accent */
   
@@ -23,6 +23,15 @@
   --color-border-hover: 255, 255, 255, 0.2;  /* White with 20% opacity */
   --color-shadow: 56, 189, 248, 0.1;    /* Primary with 10% opacity */
   --color-shadow-hover: 56, 189, 248, 0.2;   /* Primary with 20% opacity */
+
+  --color-liquid-blue: #2EC4F1;
+  --color-header-dark: #11243A;
+  --color-deep-ocean: #0A1A1F;
+  --color-off-white: #F5F5F5;
+  --color-slate-grey: #94A3B8;
+  --color-glow-cyan: #22D3EE;
+  --color-deep-teal: #0F172A;
+  --color-blue: var(--color-liquid-blue);
 }
 
 body {

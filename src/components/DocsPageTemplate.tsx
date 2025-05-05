@@ -84,16 +84,16 @@ export function Highlight({ children }: { children: React.ReactNode }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="my-6 p-4 bg-slate-50 border border-slate-200 rounded-lg"
+      className="my-6 p-4 bg-[#16202A] border border-[var(--color-liquid-blue)]/20 rounded-lg"
     >
       <div className="flex items-start">
         <div className="flex-shrink-0">
-          <svg className="h-5 w-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+          <svg className="h-5 w-5 text-[var(--color-liquid-blue)]" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
           </svg>
         </div>
         <div className="ml-3">
-          <p className="text-sm text-slate-700">{children}</p>
+          <p className="text-sm text-neutral-200">{children}</p>
         </div>
       </div>
     </motion.div>

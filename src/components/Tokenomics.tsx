@@ -70,7 +70,7 @@ export default function Tokenomics() {
             {tokenomics.map((tokenomic, index) => (
               <div
                 key={index}
-                className={`group relative p-6 bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl transition-all duration-300 hover:border-cyan-500/30 hover:bg-black/50 hover:shadow-lg hover:shadow-cyan-500/10 ${
+                className={`group relative p-6 bg-[#16202A] border border-[var(--color-liquid-blue)]/20 rounded-xl transition-all duration-300 shadow-md hover:shadow-[0_0_24px_0_var(--color-liquid-blue)] hover:border-[var(--color-liquid-blue)]/40 hover:bg-[#1B2736] hover:scale-[1.03] ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -78,22 +78,22 @@ export default function Tokenomics() {
                 onMouseLeave={() => setActiveTokenomic(null)}
               >
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold mb-2 font-playfair text-cyan-200 group-hover:text-cyan-100 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 font-playfair text-[var(--color-liquid-blue)] group-hover:text-white transition-colors">
                     {tokenomic.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
+                  <p className="text-neutral-200 text-sm leading-relaxed">
                     {tokenomic.description}
                   </p>
                 </div>
                 
                 {/* Enhanced hover effect with proper containment */}
                 <div 
-                  className={`absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-xl transition-all duration-300 overflow-hidden ${
+                  className={`absolute inset-0 bg-gradient-to-r from-[var(--color-liquid-blue)]/5 to-cyan-200/5 rounded-xl transition-all duration-300 overflow-hidden ${
                     activeTokenomic === index ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
                 <div 
-                  className={`absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-xl transition-transform duration-300 ${
+                  className={`absolute inset-0 bg-gradient-to-r from-[var(--color-liquid-blue)]/5 to-cyan-200/5 rounded-xl transition-transform duration-300 ${
                     activeTokenomic === index ? 'scale-105' : 'scale-100'
                   }`}
                   style={{ transformOrigin: 'center' }}

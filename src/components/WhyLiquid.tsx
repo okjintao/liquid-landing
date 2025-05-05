@@ -112,7 +112,7 @@ export default function WhyLiquid() {
               {benefits.map((benefit, index) => (
                 <div 
                   key={index}
-                  className={`group bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl p-6 transition-all duration-300 hover:border-cyan-500/30 hover:bg-black/50 hover:shadow-lg hover:shadow-cyan-500/10 ${
+                  className={`group bg-[#16202A] border border-[var(--color-liquid-blue)]/10 rounded-xl p-6 transition-all duration-300 shadow-md hover:shadow-[0_0_24px_0_var(--color-liquid-blue)] hover:border-[var(--color-liquid-blue)]/40 hover:bg-[#1B2736] hover:scale-[1.03] ${
                     isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
                   }`}
                   style={{ transitionDelay: `${index * 200}ms` }}
@@ -120,18 +120,18 @@ export default function WhyLiquid() {
                   onMouseLeave={() => setShowDetails(null)}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-cyan-500/20 text-cyan-300 group-hover:bg-cyan-500/30 transition-colors">
+                    <div className="p-2 rounded-lg bg-[var(--color-liquid-blue)]/20 text-[var(--color-liquid-blue)] group-hover:bg-[var(--color-liquid-blue)]/40 transition-colors">
                       {benefit.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 font-playfair text-cyan-200 group-hover:text-cyan-100 transition-colors">
+                      <h3 className="text-xl font-bold mb-2 font-playfair text-[var(--color-liquid-blue)] group-hover:text-white transition-colors">
                         {benefit.title}
                       </h3>
-                      <p className="text-neutral-300 mb-2">
+                      <p className="text-neutral-200 mb-2">
                         {benefit.description}
                       </p>
                       {showDetails === index && (
-                        <p className="text-neutral-400 text-sm leading-relaxed animate-fade-in">
+                        <p className="text-neutral-300 text-sm leading-relaxed animate-fade-in">
                           {benefit.details}
                         </p>
                       )}
@@ -162,7 +162,7 @@ export default function WhyLiquid() {
 
                 <Link
                   href="/app"
-                  className="inline-block px-12 py-4 bg-cyan-500/90 hover:bg-cyan-500 text-white rounded-lg text-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20"
+                  className="inline-block px-12 py-4 bg-[var(--color-liquid-blue)]/90 hover:bg-[var(--color-liquid-blue)] text-white rounded-lg text-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[var(--color-liquid-blue)]/20"
                 >
                   Launch App
                 </Link>

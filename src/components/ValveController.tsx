@@ -116,13 +116,13 @@ export default function ValveController() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#"
-                className="px-8 py-4 rounded-full font-bold text-black bg-gradient-to-r from-cyan-300 to-blue-200 shadow-lg hover:from-cyan-200 hover:to-blue-100 transition-colors font-playfair focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-black"
+                className="px-8 py-4 rounded-full font-bold text-white bg-[var(--color-liquid-blue)]/90 hover:bg-[var(--color-liquid-blue)] shadow-lg hover:shadow-[var(--color-liquid-blue)]/20 transition-colors font-playfair focus:outline-none focus:ring-2 focus:ring-[var(--color-liquid-blue)] focus:ring-offset-2 focus:ring-offset-black"
               >
                 Open a Valve
               </Link>
               <Link
                 href="#docs"
-                className="px-8 py-4 rounded-full font-bold border border-cyan-300 text-cyan-300 bg-transparent hover:bg-cyan-300 hover:text-black transition-all duration-300 font-playfair focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-black"
+                className="px-8 py-4 rounded-full font-bold border border-[var(--color-liquid-blue)] text-[var(--color-liquid-blue)] bg-transparent hover:bg-[var(--color-liquid-blue)]/10 transition-all duration-300 font-playfair focus:outline-none focus:ring-2 focus:ring-[var(--color-liquid-blue)] focus:ring-offset-2 focus:ring-offset-black"
               >
                 Learn More
               </Link>
