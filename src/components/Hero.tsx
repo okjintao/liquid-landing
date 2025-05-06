@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Link from 'next/link'
-import { useState } from 'react'
-import LiquidBlob3D from './LiquidBlob3D'
+import Link from "next/link";
+import { useState } from "react";
+import LiquidBlob3D from "./LiquidBlob3D";
 
 interface Tooltips {
   hype: string;
@@ -13,12 +13,13 @@ interface Tooltips {
 
 export default function Hero() {
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
-  
+
   const tooltips: Tooltips = {
     hype: "HYPE is the governance token of the Hyperliquid ecosystem",
     purr: "PURR is the utility token powering the ecosystem",
     liquid: "LIQUID is the pure store of value, designed for long-term holding",
-    ecosystem: "Part of the Hyperliquid ecosystem, providing stability and value preservation"
+    ecosystem:
+      "Part of the Hyperliquid ecosystem, providing stability and value preservation",
   };
 
   return (
@@ -32,40 +33,41 @@ export default function Hero() {
           </div>
           {/* Main Heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight tracking-tight font-playfair">
-            There&apos;s{' '}
-            <span 
+            There&apos;s{" "}
+            <span
               className="cursor-help hover:text-cyan-300 transition-colors"
-              onMouseEnter={() => setShowTooltip('hype')}
+              onMouseEnter={() => setShowTooltip("hype")}
               onMouseLeave={() => setShowTooltip(null)}
             >
               Hype
             </span>
             <br />
-            There&apos;s{' '}
-            <span 
+            There&apos;s{" "}
+            <span
               className="cursor-help hover:text-cyan-300 transition-colors"
-              onMouseEnter={() => setShowTooltip('purr')}
+              onMouseEnter={() => setShowTooltip("purr")}
               onMouseLeave={() => setShowTooltip(null)}
             >
               Purr
             </span>
             <br />
-            Here&apos;s{' '}
-            <span 
+            Here&apos;s{" "}
+            <span
               className="text-cyan-300 cursor-help"
-              onMouseEnter={() => setShowTooltip('liquid')}
+              onMouseEnter={() => setShowTooltip("liquid")}
               onMouseLeave={() => setShowTooltip(null)}
             >
               Liquid
             </span>
           </h1>
           {/* Subheading */}
-          <p 
+          <p
             className="text-base sm:text-lg md:text-2xl text-gray-300 max-w-xl mx-auto mt-4 sm:mt-6 leading-relaxed font-playfair px-4 cursor-help"
-            onMouseEnter={() => setShowTooltip('ecosystem')}
+            onMouseEnter={() => setShowTooltip("ecosystem")}
             onMouseLeave={() => setShowTooltip(null)}
           >
-            The final piece of the Hyperliquid ecosystem — a pure store of value.
+            The final piece of the Hyperliquid ecosystem — a pure store of
+            value.
           </p>
           {/* Call to Action Buttons */}
           <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full sm:w-auto px-4 sm:px-0">
@@ -87,8 +89,18 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <svg className="w-6 h-6 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        <svg
+          className="w-6 h-6 text-cyan-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
         </svg>
       </div>
 
@@ -99,5 +111,5 @@ export default function Hero() {
         </div>
       )}
     </section>
-  )
-} 
+  );
+}

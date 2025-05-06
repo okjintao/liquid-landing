@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface Step {
   title: string;
@@ -13,18 +13,21 @@ const steps: Step[] = [
   {
     title: "Burn to Create",
     description: "Burn 1% of current LIQUID supply to mint an NFT",
-    details: "The NFT grants control over a Valve Controller Module (VCM), allowing you to create and manage reward streams."
+    details:
+      "The NFT grants control over a Valve Controller Module (VCM), allowing you to create and manage reward streams.",
   },
   {
     title: "Set Commission",
     description: "Choose your commission rate on HYPE rewards",
-    details: "Set your commission rate between 0-100% on rewards earned by your VCM's depositors."
+    details:
+      "Set your commission rate between 0-100% on rewards earned by your VCM's depositors.",
   },
   {
     title: "Earn Rewards",
     description: "Earn HYPE rewards from protocol fees",
-    details: "Your VCM's capacity grows with deposits, creating sustainable reward streams while maintaining protocol stability."
-  }
+    details:
+      "Your VCM's capacity grows with deposits, creating sustainable reward streams while maintaining protocol stability.",
+  },
 ];
 
 export default function ValveController() {
@@ -38,10 +41,10 @@ export default function ValveController() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
-    const element = document.getElementById('valve-controller-section');
+    const element = document.getElementById("valve-controller-section");
     if (element) observer.observe(element);
 
     return () => {
@@ -50,33 +53,44 @@ export default function ValveController() {
   }, []);
 
   return (
-    <section id="valve-controller-section" className="py-32 relative overflow-hidden">
+    <section
+      id="valve-controller-section"
+      className="py-32 relative overflow-hidden"
+    >
       {/* Section separator line */}
-      <div 
+      <div
         className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent transition-all duration-1000 ${
-          isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+          isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
         }`}
       />
 
       <div className="section-container">
         <div className="px-4 sm:px-[5%]">
-          <div className={`space-y-4 text-center transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div
+            className={`space-y-4 text-center transition-all duration-1000 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold font-playfair">
               Become a <span className="text-cyan-300">Valve Controller</span>
             </h2>
-            <div className={`w-20 h-px bg-gradient-to-r from-cyan-500/50 to-transparent mx-auto transition-all duration-1000 delay-300 ${
-              isVisible ? 'scale-x-100' : 'scale-x-0'
-            }`} />
+            <div
+              className={`w-20 h-px bg-gradient-to-r from-cyan-500/50 to-transparent mx-auto transition-all duration-1000 delay-300 ${
+                isVisible ? "scale-x-100" : "scale-x-0"
+              }`}
+            />
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-12">
             {steps.map((step, index) => (
               <div
                 key={index}
                 className={`group relative p-6 bg-black/40 backdrop-blur-sm border border-white/5 rounded-xl transition-all duration-300 hover:border-cyan-500/30 hover:bg-black/50 hover:shadow-lg hover:shadow-cyan-500/10 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setActiveStep(index)}
@@ -98,11 +112,13 @@ export default function ValveController() {
                     </p>
                   )}
                 </div>
-                
+
                 {/* Enhanced hover effect */}
-                <div 
+                <div
                   className={`absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-xl transition-all duration-300 ${
-                    activeStep === index ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+                    activeStep === index
+                      ? "opacity-100 scale-105"
+                      : "opacity-0 scale-100"
                   }`}
                 />
               </div>
@@ -110,9 +126,13 @@ export default function ValveController() {
           </div>
 
           {/* Call to Action */}
-          <div className={`mt-16 text-center transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div
+            className={`mt-16 text-center transition-all duration-1000 delay-500 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="#"
@@ -132,11 +152,11 @@ export default function ValveController() {
       </div>
 
       {/* Bottom section separator */}
-      <div 
+      <div
         className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent transition-all duration-1000 ${
-          isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+          isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
         }`}
       />
     </section>
   );
-} 
+}

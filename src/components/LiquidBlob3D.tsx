@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Sphere, MeshDistortMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
 function WaterBlob() {
   const mesh = useRef<THREE.Mesh>(null);
@@ -12,7 +12,7 @@ function WaterBlob() {
   useFrame(() => {
     if (!mesh.current) return;
     time.current += 0.015;
-    
+
     // More dynamic motion with tendrils
     mesh.current.rotation.x = Math.sin(time.current * 0.7) * 0.15;
     mesh.current.rotation.y = Math.sin(time.current * 0.5) * 0.15;
@@ -23,7 +23,7 @@ function WaterBlob() {
       <ambientLight intensity={0.7} />
       <pointLight position={[2, 2, 2]} intensity={0.6} color="#22d3ee" />
       <pointLight position={[-2, -2, -2]} intensity={0.4} color="#67e8f9" />
-      
+
       <Sphere args={[1, 128, 128]} scale={0.9}>
         <MeshDistortMaterial
           color="#22d3ee"
@@ -62,11 +62,11 @@ export default function LiquidBlob3D() {
       <div className="absolute inset-0 overflow-visible">
         <Canvas
           camera={{ position: [0, 0, 2.5], fov: 50 }}
-          style={{ 
-            background: 'transparent',
-            width: '100%',
-            height: '100%',
-            overflow: 'visible'
+          style={{
+            background: "transparent",
+            width: "100%",
+            height: "100%",
+            overflow: "visible",
           }}
         >
           <WaterBlob />
@@ -76,4 +76,4 @@ export default function LiquidBlob3D() {
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl" />
     </div>
   );
-} 
+}

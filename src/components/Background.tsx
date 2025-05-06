@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface Particle {
   x: number;
@@ -10,7 +10,7 @@ interface Particle {
   speedX: number;
   speedY: number;
   opacity: number;
-  color: 'primary' | 'light' | 'dark' | 'white';
+  color: "primary" | "light" | "dark" | "white";
   angle: number;
   amplitude: number;
   frequency: number;
@@ -45,8 +45,8 @@ const CONFIG = {
       primary: 0.4,
       light: 0.3,
       dark: 0.2,
-      white: 0.1
-    }
+      white: 0.1,
+    },
   },
   liquid: {
     count: 150,
@@ -60,17 +60,17 @@ const CONFIG = {
       primary: 0.35,
       light: 0.35,
       dark: 0.2,
-      white: 0.1
-    }
-  }
+      white: 0.1,
+    },
+  },
 };
 
 // Fixed color values with consistent opacity
 const COLORS = {
-  primary: 'rgba(56, 189, 248, 0.4)',  // #38BDF8
-  light: 'rgba(103, 232, 249, 0.4)',   // #67E8F9
-  dark: 'rgba(34, 211, 238, 0.4)',     // #22D3EE
-  white: 'rgba(255, 255, 255, 0.4)'
+  primary: "rgba(56, 189, 248, 0.4)", // #38BDF8
+  light: "rgba(103, 232, 249, 0.4)", // #67E8F9
+  dark: "rgba(34, 211, 238, 0.4)", // #22D3EE
+  white: "rgba(255, 255, 255, 0.4)",
 };
 
 export default function Background() {
@@ -83,20 +83,20 @@ export default function Background() {
   const [showValveButton, setShowValveButton] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const pathname = usePathname();
-  const isDocsPage = pathname?.startsWith('/docs');
+  const isDocsPage = pathname?.startsWith("/docs");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setIsLiquidMode(params.get('liquid') === 'true');
+    setIsLiquidMode(params.get("liquid") === "true");
 
     const checkMobile = () => {
       setShowValveButton(window.innerWidth < 768);
     };
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
 
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.altKey && e.key.toLowerCase() === 'l') {
+      if (e.altKey && e.key.toLowerCase() === "l") {
         toggleLiquidMode();
       }
     };
@@ -114,26 +114,30 @@ export default function Background() {
       setScrollProgress(progress);
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("keydown", handleKeyPress);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-      window.removeEventListener('resize', checkMobile);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("keydown", handleKeyPress);
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const toggleLiquidMode = () => {
-    setIsLiquidMode(prev => {
+    setIsLiquidMode((prev) => {
       const newMode = !prev;
       const newParams = new URLSearchParams(window.location.search);
       if (newMode) {
-        newParams.set('liquid', 'true');
+        newParams.set("liquid", "true");
       } else {
-        newParams.delete('liquid');
+        newParams.delete("liquid");
       }
-      window.history.replaceState({}, '', `${window.location.pathname}?${newParams.toString()}`);
+      window.history.replaceState(
+        {},
+        "",
+        `${window.location.pathname}?${newParams.toString()}`,
+      );
       return newMode;
     });
   };
@@ -142,7 +146,7 @@ export default function Background() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -152,13 +156,20 @@ export default function Background() {
 
     const config: ParticleConfig = isLiquidMode ? CONFIG.liquid : CONFIG.subtle;
 
-    const getRandomColor = (): 'primary' | 'light' | 'dark' | 'white' => {
+    const getRandomColor = (): "primary" | "light" | "dark" | "white" => {
       const rand = Math.random();
       const { colorDistribution } = config;
-      if (rand < colorDistribution.primary) return 'primary';
-      if (rand < colorDistribution.primary + colorDistribution.light) return 'light';
-      if (rand < colorDistribution.primary + colorDistribution.light + colorDistribution.dark) return 'dark';
-      return 'white';
+      if (rand < colorDistribution.primary) return "primary";
+      if (rand < colorDistribution.primary + colorDistribution.light)
+        return "light";
+      if (
+        rand <
+        colorDistribution.primary +
+          colorDistribution.light +
+          colorDistribution.dark
+      )
+        return "dark";
+      return "white";
     };
 
     const createParticle = (): Particle => {
@@ -173,47 +184,74 @@ export default function Background() {
         color: getRandomColor(),
         angle: Math.random() * Math.PI * 2,
         amplitude: Math.random() * config.waveAmplitude + 0.5,
-        frequency: Math.random() * config.waveFrequency + 0.005
+        frequency: Math.random() * config.waveFrequency + 0.005,
       };
     };
 
     const initParticles = () => {
-      particlesRef.current = Array.from({ length: config.count }, createParticle);
+      particlesRef.current = Array.from(
+        { length: config.count },
+        createParticle,
+      );
     };
 
     const drawParticle = (particle: Particle) => {
       if (!ctx) return;
-      
+
       const scrollOpacity = Math.max(0, Math.pow(1 - scrollProgress * 1.5, 2));
       const particleOpacity = particle.opacity * scrollOpacity;
-      
+
       if (particleOpacity < 0.01) return;
-      
+
       ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.size * scrollOpacity, 0, Math.PI * 2);
-      
-      const gradient = ctx.createRadialGradient(
-        particle.x, particle.y, 0,
-        particle.x, particle.y, particle.size * config.glowRadius * scrollOpacity
+      ctx.arc(
+        particle.x,
+        particle.y,
+        particle.size * scrollOpacity,
+        0,
+        Math.PI * 2,
       );
-      
+
+      const gradient = ctx.createRadialGradient(
+        particle.x,
+        particle.y,
+        0,
+        particle.x,
+        particle.y,
+        particle.size * config.glowRadius * scrollOpacity,
+      );
+
       const baseColor = COLORS[particle.color];
-      const colorValues = baseColor.match(/[\d.]+/g) || ['255', '255', '255', '0.4'];
-      
+      const colorValues = baseColor.match(/[\d.]+/g) || [
+        "255",
+        "255",
+        "255",
+        "0.4",
+      ];
+
       gradient.addColorStop(0, baseColor);
-      gradient.addColorStop(0.3, `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.3)`);
-      gradient.addColorStop(0.7, `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.1)`);
-      gradient.addColorStop(1, `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0)`);
-      
+      gradient.addColorStop(
+        0.3,
+        `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.3)`,
+      );
+      gradient.addColorStop(
+        0.7,
+        `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.1)`,
+      );
+      gradient.addColorStop(
+        1,
+        `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0)`,
+      );
+
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      if (isLiquidMode && particle.color !== 'white' && scrollOpacity > 0.3) {
+      if (isLiquidMode && particle.color !== "white" && scrollOpacity > 0.3) {
         ctx.beginPath();
         ctx.moveTo(particle.x, particle.y);
         ctx.lineTo(
           particle.x - particle.speedX * config.trailLength * scrollOpacity,
-          particle.y - particle.speedY * config.trailLength * scrollOpacity
+          particle.y - particle.speedY * config.trailLength * scrollOpacity,
         );
         ctx.strokeStyle = `rgba(${colorValues[0]}, ${colorValues[1]}, ${colorValues[2]}, 0.1)`;
         ctx.lineWidth = particle.size * 0.5 * scrollOpacity;
@@ -223,13 +261,17 @@ export default function Background() {
 
     const updateParticle = (particle: Particle) => {
       const speedMultiplier = Math.max(0.3, 1 - scrollProgress);
-      
+
       particle.angle += particle.frequency * speedMultiplier;
-      const waveOffset = Math.sin(particle.angle) * particle.amplitude * speedMultiplier;
-      
+      const waveOffset =
+        Math.sin(particle.angle) * particle.amplitude * speedMultiplier;
+
       particle.x += particle.speedX * speedMultiplier;
       particle.y += (particle.speedY + waveOffset) * speedMultiplier;
-      particle.y += Math.sin(timeRef.current * 0.001 + particle.x * 0.01) * 0.2 * speedMultiplier;
+      particle.y +=
+        Math.sin(timeRef.current * 0.001 + particle.x * 0.01) *
+        0.2 *
+        speedMultiplier;
 
       if (particle.x < -50) particle.x = canvas.width + 50;
       if (particle.x > canvas.width + 50) particle.x = -50;
@@ -240,12 +282,12 @@ export default function Background() {
     const animate = () => {
       if (!ctx || !canvas) return;
 
-      ctx.fillStyle = 'rgb(15, 23, 42)';
+      ctx.fillStyle = "rgb(15, 23, 42)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       timeRef.current += 1;
 
-      particlesRef.current.forEach(particle => {
+      particlesRef.current.forEach((particle) => {
         updateParticle(particle);
         drawParticle(particle);
       });
@@ -257,10 +299,10 @@ export default function Background() {
     initParticles();
     animate();
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -285,7 +327,7 @@ export default function Background() {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            className={`transition-transform duration-500 ${isLiquidMode ? 'rotate-180' : ''}`}
+            className={`transition-transform duration-500 ${isLiquidMode ? "rotate-180" : ""}`}
           >
             <path
               d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
@@ -309,4 +351,4 @@ export default function Background() {
       )}
     </>
   );
-} 
+}

@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import Background from '@/components/Background';
-import Hero from '@/components/Hero'
-import WhyLiquid from '@/components/WhyLiquid'
-import Tokenomics from '@/components/Tokenomics'
-import ValveController from '@/components/ValveController'
-import ProtocolFeatures from '@/components/ProtocolFeatures'
+import Background from "@/components/Background";
+import Hero from "@/components/Hero";
+import WhyLiquid from "@/components/WhyLiquid";
+import Tokenomics from "@/components/Tokenomics";
+import ValveController from "@/components/ValveController";
+import ProtocolFeatures from "@/components/ProtocolFeatures";
 
 export default function Home() {
   return (

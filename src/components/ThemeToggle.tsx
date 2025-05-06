@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
@@ -17,12 +17,17 @@ export default function ThemeToggle() {
 
   return (
     <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="p-2 rounded-lg bg-liquid-deep-teal/40 border border-liquid-blue/30 text-liquid-off-white hover:bg-liquid-deep-teal/60 transition-colors"
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      {theme === "dark" ? (
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -31,7 +36,12 @@ export default function ThemeToggle() {
           />
         </svg>
       ) : (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -42,4 +52,4 @@ export default function ThemeToggle() {
       )}
     </button>
   );
-} 
+}
