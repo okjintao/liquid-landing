@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import { ThemeProvider } from "next-themes";
-import { usePathname } from "next/navigation";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import React, { useState, useEffect, createContext } from "react";
+import { ReactNode } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
+
+import { ThemeProvider } from 'next-themes';
+import { usePathname } from 'next/navigation';
+
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 // LiquidMode context
 export const LiquidModeContext = createContext({
@@ -13,13 +15,7 @@ export const LiquidModeContext = createContext({
   toggle: () => {},
 });
 
-function LiquidModeWarning({
-  show,
-  onClose,
-}: {
-  show: boolean;
-  onClose: () => void;
-}) {
+function LiquidModeWarning({ show, onClose }: { show: boolean; onClose: () => void }) {
   useEffect(() => {
     if (show) {
       const timer = setTimeout(onClose, 5000);
@@ -31,8 +27,7 @@ function LiquidModeWarning({
   return (
     <div className="fixed bottom-6 right-6 z-50 bg-[#0ea5e9] text-white px-4 py-3 rounded-lg shadow-lg animate-fade-in flex items-center gap-2">
       <span className="font-bold">Liquid Mode:</span>
-      Intense visuals enabled. Press{" "}
-      <kbd className="px-1 bg-white/20 rounded">L</kbd> to toggle.
+      Intense visuals enabled. Press <kbd className="px-1 bg-white/20 rounded">L</kbd> to toggle.
       <button onClick={onClose} className="ml-2 text-white/70 hover:text-white">
         &times;
       </button>
@@ -40,33 +35,24 @@ function LiquidModeWarning({
   );
 }
 
-export default function RootLayoutClient({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayoutClient({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isDocsPage = pathname?.startsWith("/docs");
+  const isDocsPage = pathname?.startsWith('/docs');
   const [liquidMode, setLiquidMode] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
 
   // Keyboard toggle for liquid mode
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (
-        e.key.toLowerCase() === "l" &&
-        !e.ctrlKey &&
-        !e.metaKey &&
-        !e.altKey
-      ) {
+      if (e.key.toLowerCase() === 'l' && !e.ctrlKey && !e.metaKey && !e.altKey) {
         setLiquidMode((prev) => {
           if (!prev) setShowWarning(true);
           return !prev;
         });
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (

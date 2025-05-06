@@ -1,25 +1,24 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const navigation = [
-  { name: "Introduction", href: "/docs/introduction" },
-  { name: "Quick Start", href: "/docs/quick-start" },
-  { name: "Protocol Overview", href: "/docs/protocol-overview" },
-  { name: "Tokenomics", href: "/docs/tokenomics" },
-  { name: "Tax System", href: "/docs/tax-system" },
-  { name: "Valve Controllers", href: "/docs/valve-controllers" },
-  { name: "Fee Distribution", href: "/docs/fee-distribution" },
-  { name: "Deployed Contracts", href: "/docs/deployed-contracts" },
+  { name: 'Introduction', href: '/docs/introduction' },
+  { name: 'Quick Start', href: '/docs/quick-start' },
+  { name: 'Protocol Overview', href: '/docs/protocol-overview' },
+  { name: 'Tokenomics', href: '/docs/tokenomics' },
+  { name: 'Tax System', href: '/docs/tax-system' },
+  { name: 'Valve Controllers', href: '/docs/valve-controllers' },
+  { name: 'Fee Distribution', href: '/docs/fee-distribution' },
+  { name: 'Deployed Contracts', href: '/docs/deployed-contracts' },
 ];
 
 export default function DocsNavigation() {
   const pathname = usePathname();
   const currentIndex = navigation.findIndex((item) => item.href === pathname);
   const prevPage = currentIndex > 0 ? navigation[currentIndex - 1] : null;
-  const nextPage =
-    currentIndex < navigation.length - 1 ? navigation[currentIndex + 1] : null;
+  const nextPage = currentIndex < navigation.length - 1 ? navigation[currentIndex + 1] : null;
 
   return (
     <div className="mt-12 pt-8 border-t border-cyan-500/20">
@@ -59,12 +58,7 @@ export default function DocsNavigation() {
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
         ) : (

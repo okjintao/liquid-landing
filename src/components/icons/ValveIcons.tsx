@@ -1,22 +1,17 @@
-"use client";
+'use client';
 
 interface IconProps {
   className?: string;
 }
 
-export const BurnIcon = ({ className = "w-8 h-8" }: IconProps) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+export const BurnIcon = ({ className = 'w-8 h-8' }: IconProps) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     {/* Base glow */}
     <path
       d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7z"
       fill="currentColor"
       className="text-cyan-200 opacity-10"
-      style={{ filter: "blur(4px)" }}
+      style={{ filter: 'blur(4px)' }}
     />
 
     {/* Main flame shape */}
@@ -34,11 +29,7 @@ export const BurnIcon = ({ className = "w-8 h-8" }: IconProps) => (
     />
 
     {/* Flame tips */}
-    <path
-      d="M12 2L10 5L12 7L14 5L12 2z"
-      fill="currentColor"
-      className="text-cyan-300"
-    />
+    <path d="M12 2L10 5L12 7L14 5L12 2z" fill="currentColor" className="text-cyan-300" />
 
     {/* Abstract flame elements */}
     <path
@@ -61,7 +52,7 @@ export const BurnIcon = ({ className = "w-8 h-8" }: IconProps) => (
       d="M12 3C9.24 3 7 5.24 7 8c0 1.9.95 3.57 2.4 4.6V14c0 .28.22.5.5.5h4.2c.28 0 .5-.22.5-.5v-1.4C16.05 11.57 17 9.9 17 8c0-2.76-2.24-5-5-5z"
       fill="currentColor"
       className="text-cyan-200 opacity-20"
-      style={{ filter: "blur(2px)" }}
+      style={{ filter: 'blur(2px)' }}
     />
 
     {/* Abstract lines */}
@@ -82,13 +73,8 @@ export const BurnIcon = ({ className = "w-8 h-8" }: IconProps) => (
   </svg>
 );
 
-export const CommissionIcon = ({ className = "w-8 h-8" }: IconProps) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+export const CommissionIcon = ({ className = 'w-8 h-8' }: IconProps) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
       stroke="currentColor"
@@ -104,18 +90,13 @@ export const CommissionIcon = ({ className = "w-8 h-8" }: IconProps) => (
       strokeLinecap="round"
       strokeLinejoin="round"
       className="text-cyan-200 opacity-50"
-      style={{ filter: "blur(2px)" }}
+      style={{ filter: 'blur(2px)' }}
     />
   </svg>
 );
 
-export const RewardIcon = ({ className = "w-8 h-8" }: IconProps) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+export const RewardIcon = ({ className = 'w-8 h-8' }: IconProps) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"
       fill="currentColor"
@@ -125,7 +106,7 @@ export const RewardIcon = ({ className = "w-8 h-8" }: IconProps) => (
       d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"
       fill="currentColor"
       className="text-cyan-200 opacity-50"
-      style={{ filter: "blur(2px)" }}
+      style={{ filter: 'blur(2px)' }}
     />
   </svg>
 );

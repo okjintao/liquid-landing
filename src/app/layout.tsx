@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import RootLayoutClient from "@/components/RootLayoutClient";
-import AOSInitializer from "@/components/AOSInitializer";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
+import AOSInitializer from '@/components/AOSInitializer';
+import RootLayoutClient from '@/components/RootLayoutClient';
+
+import './globals.css';
 
 declare global {
   interface Window {
@@ -25,36 +27,36 @@ declare global {
   }
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://beliquid.fun/"),
-  title: "Liquid - Decentralized Exchange Protocol",
+  metadataBase: new URL('https://beliquid.fun/'),
+  title: 'Liquid - Decentralized Exchange Protocol',
   description:
-    "Liquid is a decentralized exchange protocol built on Ethereum, offering secure and efficient trading of digital assets.",
+    'Liquid is a decentralized exchange protocol built on Ethereum, offering secure and efficient trading of digital assets.',
   openGraph: {
-    title: "Liquid - The final piece of the Hyperliquid ecosystem",
+    title: 'Liquid - The final piece of the Hyperliquid ecosystem',
     description:
-      "Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.",
-    url: "https://liquid-landing-eta.vercel.app/",
-    siteName: "Liquid",
+      'Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.',
+    url: 'https://liquid-landing-eta.vercel.app/',
+    siteName: 'Liquid',
     images: [
       {
-        url: "/opengraph-image.png",
+        url: '/opengraph-image.png',
         width: 1200,
         height: 630,
-        alt: "Liquid Logo",
+        alt: 'Liquid Logo',
       },
     ],
-    locale: "en_US",
-    type: "website",
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Liquid - The final piece of the Hyperliquid ecosystem",
+    card: 'summary_large_image',
+    title: 'Liquid - The final piece of the Hyperliquid ecosystem',
     description:
-      "Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.",
-    images: ["/twitter-image.png"],
+      'Liquid is a store of value designed to reward long-term conviction. It is trustless, transparent, and intentionally under-engineered.',
+    images: ['/twitter-image.png'],
   },
 };
 

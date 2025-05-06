@@ -1,79 +1,77 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import Background from "@/components/Background";
+import { useEffect } from 'react';
+
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+
+import Background from '@/components/Background';
 
 const navigation = [
   {
-    name: "Intro",
-    href: "/docs/introduction",
-    emoji: "🌊",
-    description: "Welcome",
+    name: 'Intro',
+    href: '/docs/introduction',
+    emoji: '🌊',
+    description: 'Welcome',
   },
   {
-    name: "Quick Start",
-    href: "/docs/quick-start",
-    emoji: "⚡",
-    description: "Get started",
+    name: 'Quick Start',
+    href: '/docs/quick-start',
+    emoji: '⚡',
+    description: 'Get started',
   },
   {
-    name: "Protocol",
-    href: "/docs/protocol-overview",
-    emoji: "🔍",
-    description: "How it works",
+    name: 'Protocol',
+    href: '/docs/protocol-overview',
+    emoji: '🔍',
+    description: 'How it works',
   },
   {
-    name: "Tokenomics",
-    href: "/docs/tokenomics",
-    emoji: "💰",
-    description: "Economics",
+    name: 'Tokenomics',
+    href: '/docs/tokenomics',
+    emoji: '💰',
+    description: 'Economics',
   },
   {
-    name: "Tax",
-    href: "/docs/tax-system",
-    emoji: "📊",
-    description: "Tax rates",
+    name: 'Tax',
+    href: '/docs/tax-system',
+    emoji: '📊',
+    description: 'Tax rates',
   },
   {
-    name: "Valve",
-    href: "/docs/valve-controllers",
-    emoji: "🎛️",
-    description: "Controllers",
+    name: 'Valve',
+    href: '/docs/valve-controllers',
+    emoji: '🎛️',
+    description: 'Controllers',
   },
   {
-    name: "Fees",
-    href: "/docs/fee-distribution",
-    emoji: "💎",
-    description: "Rewards",
+    name: 'Fees',
+    href: '/docs/fee-distribution',
+    emoji: '💎',
+    description: 'Rewards',
   },
   {
-    name: "Contracts",
-    href: "/docs/deployed-contracts",
-    emoji: "📜",
-    description: "Smart contracts",
+    name: 'Contracts',
+    href: '/docs/deployed-contracts',
+    emoji: '📜',
+    description: 'Smart contracts',
   },
   {
-    name: "Be Liquid",
-    href: "/docs/get-started",
-    emoji: "🚀",
-    description: "Join us",
+    name: 'Be Liquid',
+    href: '/docs/get-started',
+    emoji: '🚀',
+    description: 'Join us',
   },
 ];
 
-export default function DocsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DocsLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
 
   // Redirect to introduction if we're at the docs root
   useEffect(() => {
-    if (pathname === "/docs") {
-      router.push("/docs/introduction");
+    if (pathname === '/docs') {
+      router.push('/docs/introduction');
     }
   }, [pathname, router]);
 
@@ -94,16 +92,14 @@ export default function DocsLayout({
                   href={item.href}
                   className={`flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? "bg-[var(--color-liquid-blue)]/20 text-white"
-                      : "text-gray-300 hover:bg-[var(--color-liquid-blue)]/10 hover:text-white"
+                      ? 'bg-[var(--color-liquid-blue)]/20 text-white'
+                      : 'text-gray-300 hover:bg-[var(--color-liquid-blue)]/10 hover:text-white'
                   }`}
                 >
                   <span className="mr-2">{item.emoji}</span>
                   <div>
                     <div>{item.name}</div>
-                    <div className="text-xs text-gray-400">
-                      {item.description}
-                    </div>
+                    <div className="text-xs text-gray-400">{item.description}</div>
                   </div>
                 </Link>
               );

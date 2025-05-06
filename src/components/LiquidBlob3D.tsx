@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, MeshDistortMaterial } from "@react-three/drei";
-import * as THREE from "three";
+import { MeshDistortMaterial, Sphere } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+
+import React, { useRef } from 'react';
 
 function WaterBlob() {
   const mesh = useRef<THREE.Mesh>(null);
@@ -63,10 +64,10 @@ export default function LiquidBlob3D() {
         <Canvas
           camera={{ position: [0, 0, 2.5], fov: 50 }}
           style={{
-            background: "transparent",
-            width: "100%",
-            height: "100%",
-            overflow: "visible",
+            background: 'transparent',
+            width: '100%',
+            height: '100%',
+            overflow: 'visible',
           }}
         >
           <WaterBlob />

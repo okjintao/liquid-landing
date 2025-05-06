@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React from "react";
+import React from 'react';
+
+import Link from 'next/link';
 
 interface NavLink {
   name: string;
@@ -17,19 +18,19 @@ interface NavSection {
 
 const navigation: NavSection[] = [
   {
-    heading: "Protocol",
+    heading: 'Protocol',
     links: [
-      { name: "About", href: "/about", external: false },
-      { name: "Docs", href: "/docs", external: false },
-      { name: "FAQ", href: "/faq", external: false },
+      { name: 'About', href: '/about', external: false },
+      { name: 'Docs', href: '/docs', external: false },
+      { name: 'FAQ', href: '/faq', external: false },
     ],
   },
   {
-    heading: "Community",
+    heading: 'Community',
     links: [
       {
-        name: "Telegram",
-        href: "https://t.me/hyperliquid",
+        name: 'Telegram',
+        href: 'https://t.me/hyperliquid',
         external: true,
         icon: (
           <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
@@ -38,8 +39,8 @@ const navigation: NavSection[] = [
         ),
       },
       {
-        name: "Twitter",
-        href: "https://twitter.com/hyperliquid",
+        name: 'Twitter',
+        href: 'https://twitter.com/hyperliquid',
         external: true,
         icon: (
           <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
@@ -48,8 +49,8 @@ const navigation: NavSection[] = [
         ),
       },
       {
-        name: "GitHub",
-        href: "https://github.com/hyperliquid-dex",
+        name: 'GitHub',
+        href: 'https://github.com/hyperliquid-dex',
         external: true,
         icon: (
           <svg fill="currentColor" viewBox="0 0 24 24" className="h-5 w-5">
@@ -93,10 +94,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-neutral-300 text-sm leading-relaxed">
-              LIQUID is a pure store of value token within the Hyperliquid
-              ecosystem, designed for long-term holding and protocol rewards.
-              Together with HYPE and PURR, it forms a complete token ecosystem
-              for value preservation and growth.
+              LIQUID is a pure store of value token within the Hyperliquid ecosystem, designed for
+              long-term holding and protocol rewards. Together with HYPE and PURR, it forms a
+              complete token ecosystem for value preservation and growth.
             </p>
           </div>
 
@@ -104,22 +104,20 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:flex md:flex-row gap-8 md:gap-12 w-full md:w-auto">
             {navigation.map((section) => (
               <div key={section.heading} className="text-left md:text-right">
-                <h4 className="font-bold mb-4 text-lg text-white">
-                  {section.heading}
-                </h4>
+                <h4 className="font-bold mb-4 text-lg text-white">{section.heading}</h4>
                 <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.name}>
                       <Link
                         href={link.href}
-                        target={link.external ? "_blank" : undefined}
-                        rel={link.external ? "noopener noreferrer" : undefined}
+                        target={link.external ? '_blank' : undefined}
+                        rel={link.external ? 'noopener noreferrer' : undefined}
                         className="text-neutral-300 hover:text-[var(--color-liquid-blue)] transition-colors inline-flex items-center gap-2"
                       >
                         {link.icon && (
                           <span className="flex items-center">
                             {React.cloneElement(link.icon, {
-                              className: "h-4 w-4",
+                              className: 'h-4 w-4',
                             })}
                           </span>
                         )}
@@ -137,22 +135,13 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
           <span>&copy; 2025 Liquid Protocol. All rights reserved.</span>
           <div className="flex items-center gap-6">
-            <Link
-              href="/terms"
-              className="hover:text-[var(--color-liquid-blue)]"
-            >
+            <Link href="/terms" className="hover:text-[var(--color-liquid-blue)]">
               Terms
             </Link>
-            <Link
-              href="/privacy"
-              className="hover:text-[var(--color-liquid-blue)]"
-            >
+            <Link href="/privacy" className="hover:text-[var(--color-liquid-blue)]">
               Privacy
             </Link>
-            <Link
-              href="/disclaimer"
-              className="hover:text-[var(--color-liquid-blue)]"
-            >
+            <Link href="/disclaimer" className="hover:text-[var(--color-liquid-blue)]">
               Disclaimer
             </Link>
           </div>

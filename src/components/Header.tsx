@@ -1,25 +1,26 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from 'react';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const socialLinks = [
-  { name: "Telegram", href: "https://t.me/hyperliquid", icon: "telegram" },
-  { name: "Twitter", href: "https://twitter.com/hyperliquid", icon: "twitter" },
-  { name: "Medium", href: "https://medium.com/@hyperliquid", icon: "medium" },
+  { name: 'Telegram', href: 'https://t.me/hyperliquid', icon: 'telegram' },
+  { name: 'Twitter', href: 'https://twitter.com/hyperliquid', icon: 'twitter' },
+  { name: 'Medium', href: 'https://medium.com/@hyperliquid', icon: 'medium' },
 ];
 
 const docsNavItems = [
-  { name: "Intro", href: "/docs/introduction", icon: "🌊" },
-  { name: "Quick Start", href: "/docs/quick-start", icon: "⚡" },
-  { name: "Protocol", href: "/docs/protocol-overview", icon: "🔍" },
-  { name: "Tokenomics", href: "/docs/tokenomics", icon: "💰" },
-  { name: "Tax", href: "/docs/tax-system", icon: "📊" },
-  { name: "Valve", href: "/docs/valve-controllers", icon: "🎛️" },
-  { name: "Fees", href: "/docs/fee-distribution", icon: "💎" },
-  { name: "Contracts", href: "/docs/deployed-contracts", icon: "📜" },
-  { name: "Be Liquid", href: "/docs/get-started", icon: "🚀" },
+  { name: 'Intro', href: '/docs/introduction', icon: '🌊' },
+  { name: 'Quick Start', href: '/docs/quick-start', icon: '⚡' },
+  { name: 'Protocol', href: '/docs/protocol-overview', icon: '🔍' },
+  { name: 'Tokenomics', href: '/docs/tokenomics', icon: '💰' },
+  { name: 'Tax', href: '/docs/tax-system', icon: '📊' },
+  { name: 'Valve', href: '/docs/valve-controllers', icon: '🎛️' },
+  { name: 'Fees', href: '/docs/fee-distribution', icon: '💎' },
+  { name: 'Contracts', href: '/docs/deployed-contracts', icon: '📜' },
+  { name: 'Be Liquid', href: '/docs/get-started', icon: '🚀' },
 ];
 
 export default function Header() {
@@ -27,8 +28,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSocialsOpen, setIsSocialsOpen] = useState(false);
   const pathname = usePathname();
-  const isLandingPage = pathname === "/";
-  const isDocsPage = pathname.startsWith("/docs");
+  const isLandingPage = pathname === '/';
+  const isDocsPage = pathname.startsWith('/docs');
 
   useEffect(() => {
     if (!isLandingPage) {
@@ -42,15 +43,15 @@ export default function Header() {
       setIsVisible(scrollPosition > windowHeight * 0.8);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [isLandingPage]);
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isVisible || isDocsPage ? "translate-y-0" : "-translate-y-full"
+          isVisible || isDocsPage ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
         {/* Background */}
@@ -61,11 +62,7 @@ export default function Header() {
         {/* Wave animation */}
         <div className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden">
           <div className="absolute inset-0">
-            <svg
-              className="absolute w-full h-full"
-              viewBox="0 0 100 10"
-              preserveAspectRatio="none"
-            >
+            <svg className="absolute w-full h-full" viewBox="0 0 100 10" preserveAspectRatio="none">
               <path
                 d="M0,5 C20,0 40,10 60,5 C80,0 100,10 100,5 L100,10 L0,10 Z"
                 className="fill-[var(--color-liquid-blue)]/40 animate-wave-slow"
@@ -106,8 +103,8 @@ export default function Header() {
                     href="/docs/introduction"
                     className={`text-sm font-medium transition-all duration-300 px-1 ${
                       isDocsPage
-                        ? "font-bold border-b-2 border-[var(--color-liquid-blue)]"
-                        : "text-white/80 hover:text-[var(--color-liquid-blue)]"
+                        ? 'font-bold border-b-2 border-[var(--color-liquid-blue)]'
+                        : 'text-white/80 hover:text-[var(--color-liquid-blue)]'
                     }`}
                   >
                     Documentation
@@ -115,9 +112,9 @@ export default function Header() {
                   <Link
                     href="/faq"
                     className={`text-sm font-medium transition-all duration-300 px-1 ${
-                      pathname === "/faq"
-                        ? "font-bold border-b-2 border-[var(--color-liquid-blue)]"
-                        : "text-white/80 hover:text-[var(--color-liquid-blue)]"
+                      pathname === '/faq'
+                        ? 'font-bold border-b-2 border-[var(--color-liquid-blue)]'
+                        : 'text-white/80 hover:text-[var(--color-liquid-blue)]'
                     }`}
                   >
                     FAQ
@@ -141,7 +138,7 @@ export default function Header() {
                         />
                       </svg>
                       <svg
-                        className={`w-4 h-4 transition-transform duration-300 ${isSocialsOpen ? "rotate-180" : ""}`}
+                        className={`w-4 h-4 transition-transform duration-300 ${isSocialsOpen ? 'rotate-180' : ''}`}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -157,8 +154,8 @@ export default function Header() {
                     <div
                       className={`absolute top-full right-0 mt-2 w-48 bg-[var(--color-header-dark)]/95 backdrop-blur-md border border-[var(--color-liquid-blue)]/20 rounded-lg shadow-lg transition-all duration-300 ${
                         isSocialsOpen
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
+                          ? 'opacity-100 translate-y-0'
+                          : 'opacity-0 -translate-y-2 pointer-events-none'
                       }`}
                     >
                       <div className="py-2">
@@ -181,15 +178,10 @@ export default function Header() {
                 {/* Mobile Menu Button - Always visible */}
                 <button
                   className="md:hidden text-white/80 hover:text-[var(--color-liquid-blue)] transition-colors"
-                  aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                  aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -207,8 +199,8 @@ export default function Header() {
         <div
           className={`md:hidden fixed inset-0 bg-[var(--color-header-dark)]/95 backdrop-blur-md z-40 transition-all duration-300 ${
             isMobileMenuOpen
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-full pointer-events-none"
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 -translate-y-full pointer-events-none'
           }`}
         >
           <div className="pt-20 px-4">
@@ -217,8 +209,8 @@ export default function Header() {
                 href="/docs/introduction"
                 className={`text-lg font-medium transition-all duration-300 px-1 ${
                   isDocsPage
-                    ? "font-bold border-b-2 border-[var(--color-liquid-blue)]"
-                    : "text-white/80 hover:text-[var(--color-liquid-blue)]"
+                    ? 'font-bold border-b-2 border-[var(--color-liquid-blue)]'
+                    : 'text-white/80 hover:text-[var(--color-liquid-blue)]'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -227,18 +219,16 @@ export default function Header() {
               <Link
                 href="/faq"
                 className={`text-lg font-medium transition-all duration-300 px-1 ${
-                  pathname === "/faq"
-                    ? "font-bold border-b-2 border-[var(--color-liquid-blue)]"
-                    : "text-white/80 hover:text-[var(--color-liquid-blue)]"
+                  pathname === '/faq'
+                    ? 'font-bold border-b-2 border-[var(--color-liquid-blue)]'
+                    : 'text-white/80 hover:text-[var(--color-liquid-blue)]'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 FAQ
               </Link>
               <div className="pt-2">
-                <div className="text-lg font-medium text-white/80 mb-2">
-                  Socials
-                </div>
+                <div className="text-lg font-medium text-white/80 mb-2">Socials</div>
                 <div className="pl-4 flex flex-col gap-2">
                   {socialLinks.map((link) => (
                     <a
@@ -270,14 +260,12 @@ export default function Header() {
                   href={item.href}
                   className={`flex flex-col items-center justify-center min-w-[3.5rem] px-1.5 py-0.5 rounded-lg transition-all duration-300 ${
                     pathname === item.href
-                      ? "bg-[var(--color-liquid-blue)]/20 text-white"
-                      : "text-white/80 hover:bg-[var(--color-liquid-blue)]/10 hover:text-white"
+                      ? 'bg-[var(--color-liquid-blue)]/20 text-white'
+                      : 'text-white/80 hover:bg-[var(--color-liquid-blue)]/10 hover:text-white'
                   }`}
                 >
                   <span className="text-lg">{item.icon}</span>
-                  <span className="text-[10px] font-medium leading-tight">
-                    {item.name}
-                  </span>
+                  <span className="text-[10px] font-medium leading-tight">{item.name}</span>
                 </Link>
               ))}
             </div>

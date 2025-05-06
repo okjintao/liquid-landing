@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
 
 interface Tokenomic {
   title: string;
@@ -9,22 +9,20 @@ interface Tokenomic {
 
 const tokenomics: Tokenomic[] = [
   {
-    title: "Initial Distribution",
-    description: "100% of supply seeded to Uniswap v3 LIQUID/HYPE pool",
+    title: 'Initial Distribution',
+    description: '100% of supply seeded to Uniswap v3 LIQUID/HYPE pool',
   },
   {
-    title: "Tax Structure",
-    description:
-      "Dynamic sell tax that increases on sells and decreases on buys",
+    title: 'Tax Structure',
+    description: 'Dynamic sell tax that increases on sells and decreases on buys',
   },
   {
-    title: "Fee Distribution",
-    description: "Initial 100% burned, then 90% burned and 10% to VCMs",
+    title: 'Fee Distribution',
+    description: 'Initial 100% burned, then 90% burned and 10% to VCMs',
   },
   {
-    title: "Exit Queue",
-    description:
-      "Tax-free exit system with FIFO-based queue for converting LIQUID to HYPE",
+    title: 'Exit Queue',
+    description: 'Tax-free exit system with FIFO-based queue for converting LIQUID to HYPE',
   },
 ];
 
@@ -39,10 +37,10 @@ export default function Tokenomics() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
-    const element = document.getElementById("tokenomics-section");
+    const element = document.getElementById('tokenomics-section');
     if (element) observer.observe(element);
 
     return () => {
@@ -55,7 +53,7 @@ export default function Tokenomics() {
       {/* Section separator line */}
       <div
         className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent transition-all duration-1000 ${
-          isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+          isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
         }`}
       />
 
@@ -63,17 +61,13 @@ export default function Tokenomics() {
         <div className="px-4 sm:px-[5%]">
           <div
             className={`space-y-4 text-center transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-playfair">
-              Tokenomics
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-bold font-playfair">Tokenomics</h2>
             <p className="text-neutral-300 max-w-2xl mx-auto">
-              A carefully designed token economy focused on long-term value
-              preservation and sustainable growth
+              A carefully designed token economy focused on long-term value preservation and
+              sustainable growth
             </p>
           </div>
 
@@ -82,9 +76,7 @@ export default function Tokenomics() {
               <div
                 key={index}
                 className={`group relative p-8 bg-[#16202A]/80 backdrop-blur-sm border border-white/10 rounded-xl transition-all duration-300 shadow-md hover:shadow-[0_0_24px_0_rgba(255,255,255,0.1)] hover:border-white/20 hover:bg-[#1B2736]/90 hover:scale-[1.02] ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setActiveTokenomic(index)}
@@ -102,14 +94,14 @@ export default function Tokenomics() {
                 {/* Enhanced hover effect with proper containment */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-xl transition-all duration-300 overflow-hidden ${
-                    activeTokenomic === index ? "opacity-100" : "opacity-0"
+                    activeTokenomic === index ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
                 <div
                   className={`absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-xl transition-transform duration-300 ${
-                    activeTokenomic === index ? "scale-105" : "scale-100"
+                    activeTokenomic === index ? 'scale-105' : 'scale-100'
                   }`}
-                  style={{ transformOrigin: "center" }}
+                  style={{ transformOrigin: 'center' }}
                 />
               </div>
             ))}
@@ -120,7 +112,7 @@ export default function Tokenomics() {
       {/* Bottom section separator */}
       <div
         className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent transition-all duration-1000 ${
-          isVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+          isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
         }`}
       />
     </section>

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function DocsCTA() {
   return (
@@ -10,8 +10,8 @@ export default function DocsCTA() {
           Ready to Get Started?
         </h2>
         <p className="text-neutral-300 mb-8">
-          Experience the power of LIQUID Protocol firsthand. Join our community
-          and start exploring the future of DeFi.
+          Experience the power of LIQUID Protocol firsthand. Join our community and start exploring
+          the future of DeFi.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link

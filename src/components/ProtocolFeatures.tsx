@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
 
 interface Feature {
   title: string;
@@ -9,34 +9,34 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    title: "Immutable Supply",
+    title: 'Immutable Supply',
     description:
-      "Fixed total supply with no minting capability. Initial distribution 100% seeded to Uniswap v3 LIQUID/HYPE pool.",
+      'Fixed total supply with no minting capability. Initial distribution 100% seeded to Uniswap v3 LIQUID/HYPE pool.',
   },
   {
-    title: "Dynamic Sell Tax",
+    title: 'Dynamic Sell Tax',
     description:
-      "Adaptive tax system that increases on sells and decreases on buys, with throttled adjustments and cooldown periods.",
+      'Adaptive tax system that increases on sells and decreases on buys, with throttled adjustments and cooldown periods.',
   },
   {
-    title: "Fluid Management Unit",
+    title: 'Fluid Management Unit',
     description:
-      "Immutable contract managing protocol liquidity, fee claiming, and tax routing. All LP tokens are locked.",
+      'Immutable contract managing protocol liquidity, fee claiming, and tax routing. All LP tokens are locked.',
   },
   {
-    title: "Valve Controller Modules",
+    title: 'Valve Controller Modules',
     description:
-      "NFT-based access to create and manage reward streams. Earn HYPE rewards while maintaining protocol stability.",
+      'NFT-based access to create and manage reward streams. Earn HYPE rewards while maintaining protocol stability.',
   },
   {
-    title: "Tax-Free Exit Queue",
+    title: 'Tax-Free Exit Queue',
     description:
-      "FIFO-based exit system allowing users to convert LIQUID to HYPE tax-free, with delays based on exit size.",
+      'FIFO-based exit system allowing users to convert LIQUID to HYPE tax-free, with delays based on exit size.',
   },
   {
-    title: "Fee Distribution",
+    title: 'Fee Distribution',
     description:
-      "Initial 100% LIQUID fees burned. After benchmark: 90% burned, 10% distributed as HYPE to VCMs.",
+      'Initial 100% LIQUID fees burned. After benchmark: 90% burned, 10% distributed as HYPE to VCMs.',
   },
 ];
 
@@ -51,10 +51,10 @@ export default function ProtocolFeatures() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
-    const element = document.getElementById("protocol-features-section");
+    const element = document.getElementById('protocol-features-section');
     if (element) observer.observe(element);
 
     return () => {
@@ -63,28 +63,20 @@ export default function ProtocolFeatures() {
   }, []);
 
   return (
-    <section
-      id="protocol-features-section"
-      className="py-32 relative overflow-hidden"
-    >
+    <section id="protocol-features-section" className="py-32 relative overflow-hidden">
       <div className="section-container">
         <div className="px-4 sm:px-[5%]">
           <div
             className={`space-y-4 text-center transition-all duration-1000 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             <h2 className="text-4xl md:text-5xl font-bold font-playfair">
-              Protocol{" "}
-              <span className="text-[var(--color-liquid-blue)]">
-                Architecture
-              </span>
+              Protocol <span className="text-[var(--color-liquid-blue)]">Architecture</span>
             </h2>
             <p className="text-neutral-300 max-w-2xl mx-auto">
-              A robust and innovative protocol design focused on stability,
-              sustainability, and user rewards
+              A robust and innovative protocol design focused on stability, sustainability, and user
+              rewards
             </p>
           </div>
 
@@ -93,9 +85,7 @@ export default function ProtocolFeatures() {
               <div
                 key={index}
                 className={`group relative p-8 bg-[#16202A]/80 backdrop-blur-sm border border-white/10 rounded-xl transition-all duration-300 shadow-md hover:shadow-[0_0_24px_0_rgba(255,255,255,0.1)] hover:border-white/20 hover:bg-[#1B2736]/90 hover:scale-[1.02] ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setActiveFeature(index)}
@@ -113,14 +103,14 @@ export default function ProtocolFeatures() {
                 {/* Enhanced hover effect with proper containment */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-xl transition-all duration-300 overflow-hidden ${
-                    activeFeature === index ? "opacity-100" : "opacity-0"
+                    activeFeature === index ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
                 <div
                   className={`absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-xl transition-transform duration-300 ${
-                    activeFeature === index ? "scale-105" : "scale-100"
+                    activeFeature === index ? 'scale-105' : 'scale-100'
                   }`}
-                  style={{ transformOrigin: "center" }}
+                  style={{ transformOrigin: 'center' }}
                 />
               </div>
             ))}

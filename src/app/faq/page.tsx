@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import Background from "@/components/Background";
+import { useState } from 'react';
+
+import Link from 'next/link';
+
+import Background from '@/components/Background';
 
 interface FAQItem {
   question: string;
@@ -11,42 +13,42 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "What is LIQUID?",
+    question: 'What is LIQUID?',
     answer:
       "LIQUID is a pure store of value token within the Hyperliquid ecosystem. It's designed to maintain long-term value through a combination of fixed supply, dynamic tax mechanisms, and protocol-controlled liquidity.",
   },
   {
-    question: "How does the dynamic sell tax work?",
+    question: 'How does the dynamic sell tax work?',
     answer:
-      "The sell tax adjusts based on market conditions. It increases on sells and decreases on buys, with throttled adjustments and cooldown periods to prevent manipulation. This mechanism helps maintain price stability while discouraging excessive selling.",
+      'The sell tax adjusts based on market conditions. It increases on sells and decreases on buys, with throttled adjustments and cooldown periods to prevent manipulation. This mechanism helps maintain price stability while discouraging excessive selling.',
   },
   {
-    question: "What is the Fluid Management Unit (FMU)?",
+    question: 'What is the Fluid Management Unit (FMU)?',
     answer:
-      "The FMU is an immutable contract that manages protocol liquidity, fee claiming, and tax routing. All LP tokens are locked within this unit, ensuring that liquidity remains secure and controlled by the protocol.",
+      'The FMU is an immutable contract that manages protocol liquidity, fee claiming, and tax routing. All LP tokens are locked within this unit, ensuring that liquidity remains secure and controlled by the protocol.',
   },
   {
-    question: "How do Valve Controller Modules (VCMs) work?",
+    question: 'How do Valve Controller Modules (VCMs) work?',
     answer:
-      "VCMs are NFT-based access points that allow holders to create and manage reward streams. They earn HYPE rewards while helping maintain protocol stability through their management of liquidity flows.",
+      'VCMs are NFT-based access points that allow holders to create and manage reward streams. They earn HYPE rewards while helping maintain protocol stability through their management of liquidity flows.',
   },
   {
-    question: "What is the tax-free exit queue?",
+    question: 'What is the tax-free exit queue?',
     answer:
-      "The exit queue is a FIFO-based system that allows users to convert LIQUID to HYPE tax-free. The delay period is based on the size of the exit, with larger exits requiring longer waiting periods to maintain protocol stability.",
+      'The exit queue is a FIFO-based system that allows users to convert LIQUID to HYPE tax-free. The delay period is based on the size of the exit, with larger exits requiring longer waiting periods to maintain protocol stability.',
   },
   {
-    question: "How are fees distributed?",
+    question: 'How are fees distributed?',
     answer:
-      "Initially, 100% of LIQUID fees are burned. After reaching a benchmark, 90% of fees continue to be burned while 10% are distributed as HYPE rewards to VCM holders.",
+      'Initially, 100% of LIQUID fees are burned. After reaching a benchmark, 90% of fees continue to be burned while 10% are distributed as HYPE rewards to VCM holders.',
   },
   {
-    question: "What is the total supply of LIQUID?",
+    question: 'What is the total supply of LIQUID?',
     answer:
-      "LIQUID has a fixed total supply with no minting capability. The initial distribution was 100% seeded to the Uniswap v3 LIQUID/HYPE pool.",
+      'LIQUID has a fixed total supply with no minting capability. The initial distribution was 100% seeded to the Uniswap v3 LIQUID/HYPE pool.',
   },
   {
-    question: "How can I participate in the protocol?",
+    question: 'How can I participate in the protocol?',
     answer:
       "You can participate by holding LIQUID tokens, becoming a VCM holder to earn rewards, or providing liquidity to the LIQUID/HYPE pool. Each role contributes to the protocol's stability and growth.",
   },
@@ -64,7 +66,7 @@ export default function FAQPage() {
           <div className="px-4 sm:px-[5%]">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-playfair text-liquid-off-white mb-4 sm:mb-6">
-                Frequently Asked{" "}
+                Frequently Asked{' '}
                 <span className="relative inline-block text-liquid-blue">
                   Questions
                   <span
@@ -94,9 +96,7 @@ export default function FAQPage() {
                   >
                     <button
                       className="w-full px-4 sm:px-6 py-3 sm:py-4 text-left focus:outline-none hover:bg-cyan-950/40 transition-colors duration-200"
-                      onClick={() =>
-                        setOpenIndex(openIndex === index ? null : index)
-                      }
+                      onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     >
                       <div className="flex justify-between items-center gap-3 sm:gap-4">
                         <h3 className="text-base sm:text-lg md:text-xl font-bold font-playfair text-neutral-200 group-hover:text-cyan-100 transition-colors duration-200">
@@ -104,7 +104,7 @@ export default function FAQPage() {
                         </h3>
                         <svg
                           className={`w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0 transition-all duration-300 ${
-                            openIndex === index ? "rotate-180 scale-110" : ""
+                            openIndex === index ? 'rotate-180 scale-110' : ''
                           }`}
                           fill="none"
                           viewBox="0 0 24 24"
@@ -121,9 +121,7 @@ export default function FAQPage() {
                     </button>
                     <div
                       className={`px-4 sm:px-6 transition-all duration-300 ${
-                        openIndex === index
-                          ? "max-h-96 pb-6 opacity-100"
-                          : "max-h-0 opacity-0"
+                        openIndex === index ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'
                       } overflow-hidden`}
                     >
                       <div className="pt-4 border-t border-cyan-500/10">
@@ -149,8 +147,7 @@ export default function FAQPage() {
                 Still have questions?
               </h2>
               <p className="text-neutral-200/70 font-sans mb-6 sm:mb-8">
-                Check out our detailed documentation or join our community for
-                more information.
+                Check out our detailed documentation or join our community for more information.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
