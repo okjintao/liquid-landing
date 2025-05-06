@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface Particle {
   x: number;
@@ -81,6 +82,8 @@ export default function Background() {
   const [isLiquidMode, setIsLiquidMode] = useState(false);
   const [showValveButton, setShowValveButton] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const pathname = usePathname();
+  const isDocsPage = pathname?.startsWith('/docs');
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -269,9 +272,9 @@ export default function Background() {
       <canvas
         ref={canvasRef}
         className="fixed inset-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 0 }}
+        style={{ zIndex: -1 }}
       />
-      {showValveButton && (
+      {!isDocsPage && showValveButton && (
         <button
           onClick={toggleLiquidMode}
           className="fixed bottom-4 right-4 z-50 p-2 rounded-full bg-black/20 backdrop-blur-sm border border-white/10 hover:border-primary/50 transition-all duration-300 group"
@@ -299,7 +302,7 @@ export default function Background() {
           </svg>
         </button>
       )}
-      {!showValveButton && (
+      {!isDocsPage && !showValveButton && (
         <div className="fixed bottom-4 right-4 z-50 text-xs text-neutral-400">
           Press Alt + L to toggle liquid mode
         </div>

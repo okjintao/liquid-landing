@@ -61,11 +61,103 @@ hr {
 
 /* Card styles */
 .card {
-  @apply bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all duration-300;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  @apply border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.05)];
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+/* Docs specific styles */
+.prose {
+  --tw-prose-body: #E2E8F0;
+  --tw-prose-headings: #F8FAFC;
+  --tw-prose-links: #38BDF8;
+  --tw-prose-bold: #F8FAFC;
+  --tw-prose-counters: #94A3B8;
+  --tw-prose-bullets: #94A3B8;
+  --tw-prose-hr: #334155;
+  --tw-prose-quotes: #F8FAFC;
+  --tw-prose-quote-borders: #334155;
+  --tw-prose-captions: #94A3B8;
+  --tw-prose-code: #F8FAFC;
+  --tw-prose-pre-code: #E2E8F0;
+  --tw-prose-pre-bg: #0F172A;
+  --tw-prose-th-borders: #334155;
+  --tw-prose-td-borders: #334155;
+}
+
+.prose a {
+  color: var(--tw-prose-links);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose strong {
+  color: var(--tw-prose-bold);
+  font-weight: 600;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: var(--tw-prose-headings);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.prose p {
+  color: var(--tw-prose-body);
+  line-height: 1.75;
+}
+
+.prose ul, .prose ol {
+  color: var(--tw-prose-body);
+}
+
+.prose li {
+  margin: 0.5em 0;
+}
+
+.prose blockquote {
+  color: var(--tw-prose-quotes);
+  border-left-color: var(--tw-prose-quote-borders);
+}
+
+.prose code {
+  color: var(--tw-prose-code);
+  background-color: rgba(15, 23, 42, 0.8);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+}
+
+.prose pre {
+  background-color: var(--tw-prose-pre-bg);
+  color: var(--tw-prose-pre-code);
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose th {
+  color: var(--tw-prose-headings);
+  border-bottom-color: var(--tw-prose-th-borders);
+}
+
+.prose td {
+  color: var(--tw-prose-body);
+  border-bottom-color: var(--tw-prose-td-borders);
 }
 
 /* Shimmer effect */

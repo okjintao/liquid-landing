@@ -67,8 +67,8 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#141E2A] text-neutral-200 mt-24">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12">
           {/* Brand and Description Section */}
           <div className="flex flex-col gap-4 max-w-md">
             <div className="flex items-center gap-3">
@@ -86,11 +86,11 @@ export default function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col md:flex-row gap-12 md:ml-auto">
+          <div className="grid grid-cols-2 md:flex md:flex-row gap-8 md:gap-12 w-full md:w-auto">
             {navigation.map((section) => (
-              <div key={section.heading} className="text-right">
+              <div key={section.heading} className="text-left md:text-right">
                 <h4 className="font-bold mb-4 text-lg text-white">{section.heading}</h4>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {section.links.map((link) => (
                     <li key={link.name}>
                       <Link
@@ -99,10 +99,10 @@ export default function Footer() {
                         rel={link.external ? 'noopener noreferrer' : undefined}
                         className="text-neutral-300 hover:text-[var(--color-liquid-blue)] transition-colors inline-flex items-center gap-2"
                       >
-                        <span>{link.name}</span>
                         {link.icon && (
-                          <span className="ml-1 flex items-center">{React.cloneElement(link.icon, { className: 'h-4 w-4' })}</span>
+                          <span className="flex items-center">{React.cloneElement(link.icon, { className: 'h-4 w-4' })}</span>
                         )}
+                        <span>{link.name}</span>
                       </Link>
                     </li>
                   ))}
@@ -113,9 +113,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-400">
-          <span>&copy; {new Date().getFullYear()} Liquid Protocol. All rights reserved.</span>
-          <div className="flex items-center gap-6 mt-4 md:mt-0">
+        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-400">
+          <span>&copy; 2025 Liquid Protocol. All rights reserved.</span>
+          <div className="flex items-center gap-6">
             <Link href="/terms" className="hover:text-[var(--color-liquid-blue)]">Terms</Link>
             <Link href="/privacy" className="hover:text-[var(--color-liquid-blue)]">Privacy</Link>
             <Link href="/disclaimer" className="hover:text-[var(--color-liquid-blue)]">Disclaimer</Link>

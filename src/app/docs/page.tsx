@@ -110,11 +110,11 @@ export default function Documentation() {
       <div className="min-h-screen pt-24">
         <div className="flex">
           {/* Sidebar */}
-          <aside className="fixed top-24 left-0 w-64 h-[calc(100vh-6rem)] overflow-y-auto bg-black/20 backdrop-blur-lg border-r border-white/10">
+          <aside className="fixed top-24 left-0 w-64 h-[calc(100vh-6rem)] overflow-y-auto bg-[var(--color-liquid-blue)]/5 backdrop-blur-xl border-r border-[var(--color-liquid-blue)]/20">
             <nav className="p-4">
               {sections.map((section) => (
                 <div key={section.title} className="mb-6">
-                  <h3 className="text-sm font-semibold text-neutral-400 mb-2">
+                  <h3 className="text-sm font-semibold text-white/80 mb-2">
                     {section.title}
                   </h3>
                   <ul className="space-y-1">
@@ -124,8 +124,8 @@ export default function Documentation() {
                           onClick={() => scrollToSection(item.id)}
                           className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
                             activeSection === item.id
-                              ? 'text-cyan-300 bg-white/10'
-                              : 'text-neutral-300 hover:text-cyan-300 hover:bg-white/5'
+                              ? 'text-white bg-[var(--color-liquid-blue)]/20'
+                              : 'text-white/80 hover:text-white hover:bg-[var(--color-liquid-blue)]/10'
                           }`}
                         >
                           {item.title}
@@ -142,104 +142,132 @@ export default function Documentation() {
           <main className="flex-1 ml-64">
             <div className="max-w-4xl mx-auto px-8 py-12">
               <div className="prose prose-invert max-w-none">
-                <h1 className="text-4xl font-bold mb-8">Documentation</h1>
+                <h1 className="text-4xl font-bold text-white mb-8">Documentation</h1>
                 
                 <section id="introduction" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Introduction</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    LIQUID is a token designed to reward long-term conviction. Unlike stablecoins, its price may fluctuate based on market conditions. It's intentionally under-engineered, focusing on trustlessness and transparency.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Introduction</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      LIQUID is a token designed to reward long-term conviction. Unlike stablecoins, its price may fluctuate based on market conditions. It's intentionally under-engineered, focusing on trustlessness and transparency.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="quick-start" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Quick Start</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Get started with LIQUID in a few simple steps...
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Quick Start</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Get started with LIQUID in a few simple steps...
+                    </p>
+                  </div>
                 </section>
 
                 <section id="tokenomics" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Tokenomics</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    LIQUID has a fixed supply that can never be increased. The token is designed for long-term holding, with mechanisms to protect holders against short-term speculation.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Tokenomics</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      LIQUID has a fixed supply that can never be increased. The token is designed for long-term holding, with mechanisms to protect holders against short-term speculation.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="protocol-overview" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Protocol Overview</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    The LIQUID protocol is built on trustless and transparent mechanics, designed to reward long-term holders.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Protocol Overview</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      The LIQUID protocol is built on trustless and transparent mechanics, designed to reward long-term holders.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="tax-system" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Tax System</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    The tax system automatically adjusts based on market activity, protecting long-term holders while encouraging participation.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Tax System</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      The tax system automatically adjusts based on market activity, protecting long-term holders while encouraging participation.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="valve-controllers" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Valve Controllers</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Valve Controllers are special tokens that give holders governance rights in the protocol, helping maintain system balance.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Valve Controllers</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Valve Controllers are special tokens that give holders governance rights in the protocol, helping maintain system balance.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="fee-distribution" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Fee Distribution</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Fees are primarily burned to reduce supply, with a portion going to Valve Controller holders after certain conditions are met.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Fee Distribution</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Fees are primarily burned to reduce supply, with a portion going to Valve Controller holders after certain conditions are met.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="liquid" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">LIQUID</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    LIQUID is the ecosystem's long-term holding token, designed to reward conviction and protect against short-term speculation.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">LIQUID</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      LIQUID is the ecosystem's long-term holding token, designed to reward conviction and protect against short-term speculation.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="hype" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">HYPE</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    HYPE is the governance token of the Hyperliquid ecosystem, allowing holders to participate in protocol decisions.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">HYPE</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      HYPE is the governance token of the Hyperliquid ecosystem, allowing holders to participate in protocol decisions.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="purr" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">PURR</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    PURR is a meme token designed for community engagement and fun within the ecosystem.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">PURR</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      PURR is a meme token designed for community engagement and fun within the ecosystem.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="token-interactions" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Token Interactions</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Learn how LIQUID, HYPE, and PURR work together in the ecosystem.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Token Interactions</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Learn how LIQUID, HYPE, and PURR work together in the ecosystem.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="smart-contracts" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Smart Contracts</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Technical details about the smart contracts powering the LIQUID protocol.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Smart Contracts</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Technical details about the smart contracts powering the LIQUID protocol.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="security" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Security</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Security measures and best practices for interacting with the protocol.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Security</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Security measures and best practices for interacting with the protocol.
+                    </p>
+                  </div>
                 </section>
 
                 <section id="audits" className="mb-16 scroll-mt-24">
-                  <h2 className="text-3xl font-bold mb-4">Audits</h2>
-                  <p className="text-lg text-neutral-300 mb-4">
-                    Information about security audits and verification of the protocol.
-                  </p>
+                  <div className="bg-[var(--color-liquid-blue)]/10 border border-[var(--color-liquid-blue)]/20 rounded-xl p-6">
+                    <h2 className="text-3xl font-bold text-white mb-4">Audits</h2>
+                    <p className="text-lg text-white/90 mb-4">
+                      Information about security audits and verification of the protocol.
+                    </p>
+                  </div>
                 </section>
               </div>
             </div>

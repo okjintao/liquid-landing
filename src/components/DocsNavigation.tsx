@@ -21,14 +21,14 @@ export default function DocsNavigation() {
   const nextPage = currentIndex < navigation.length - 1 ? navigation[currentIndex + 1] : null;
 
   return (
-    <div className="mt-12 pt-8 border-t border-slate-200">
+    <div className="mt-12 pt-8 border-t border-cyan-500/20">
       <div className="flex items-center justify-between">
         {prevPage ? (
           <Link
             href={prevPage.href}
-            className="group flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+            className="group flex items-center text-sm font-medium text-neutral-300 hover:text-cyan-300 transition-colors"
           >
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             {prevPage.name}
@@ -39,10 +39,10 @@ export default function DocsNavigation() {
         {nextPage ? (
           <Link
             href={nextPage.href}
-            className="group flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+            className="group flex items-center text-sm font-medium text-neutral-300 hover:text-cyan-300 transition-colors"
           >
             {nextPage.name}
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </Link>
