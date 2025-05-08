@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -194,60 +195,67 @@ export default function Header() {
             </div>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Menu - Fixed position */}
-        <div
-          className={`md:hidden fixed inset-0 bg-[var(--color-header-dark)]/95 backdrop-blur-md z-40 transition-all duration-300 ${
-            isMobileMenuOpen
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 -translate-y-full pointer-events-none'
-          }`}
-        >
-          <div className="pt-20 px-4">
-            <nav className="flex flex-col gap-4">
+      {/* Mobile Dropdown Tray */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden fixed left-0 right-0 top-[64px] z-40 bg-[#141E2A] border-b border-[var(--color-liquid-blue)]/30 shadow-xl overflow-hidden"
+            style={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+          >
+            <div className="flex flex-col items-stretch px-4 py-4 gap-3">
               <Link
                 href="/docs/introduction"
-                className={`text-lg font-medium transition-all duration-300 px-1 ${
-                  isDocsPage
-                    ? 'font-bold border-b-2 border-[var(--color-liquid-blue)]'
-                    : 'text-white/80 hover:text-[var(--color-liquid-blue)]'
-                }`}
+                className="text-lg font-medium text-white/90 py-2 px-2 rounded hover:bg-[var(--color-liquid-blue)]/10 transition-colors text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Documentation
               </Link>
               <Link
                 href="/faq"
-                className={`text-lg font-medium transition-all duration-300 px-1 ${
-                  pathname === '/faq'
-                    ? 'font-bold border-b-2 border-[var(--color-liquid-blue)]'
-                    : 'text-white/80 hover:text-[var(--color-liquid-blue)]'
-                }`}
+                className="text-lg font-medium text-white/90 py-2 px-2 rounded hover:bg-[var(--color-liquid-blue)]/10 transition-colors text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 FAQ
               </Link>
-              <div className="pt-2">
-                <div className="text-lg font-medium text-white/80 mb-2">Socials</div>
-                <div className="pl-4 flex flex-col gap-2">
-                  {socialLinks.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-base text-white/80 hover:text-[var(--color-liquid-blue)] transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </a>
-                  ))}
-                </div>
+              <div className="flex flex-row items-center justify-center gap-6 pt-2">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/80 hover:text-[var(--color-liquid-blue)] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label={link.name}
+                  >
+                    {link.icon === 'telegram' && (
+                      <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                      </svg>
+                    )}
+                    {link.icon === 'twitter' && (
+                      <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                      </svg>
+                    )}
+                    {link.icon === 'medium' && (
+                      <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+                        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 .38-.16.85-.44 1.12l-3.13 3.7a1.6 1.6 0 01-1.13.52 1.6 1.6 0 01-1.13-.52l-3.13-3.7a1.6 1.6 0 01-.44-1.12c0-.38.16-.85.44-1.12l3.13-3.7a1.6 1.6 0 011.13-.52 1.6 1.6 0 011.13.52l3.13 3.7c.28.27.44.74.44 1.12z" />
+                      </svg>
+                    )}
+                  </a>
+                ))}
               </div>
-            </nav>
-          </div>
-        </div>
-      </header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bottom Navigation for Docs Pages */}
       {isDocsPage && (

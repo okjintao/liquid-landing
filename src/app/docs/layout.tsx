@@ -134,9 +134,9 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
 
         {/* Content */}
         <div className="flex-1 lg:ml-64">
-          <div className="min-h-screen">
-            <div className="max-w-4xl mx-auto px-6 py-24">
-              <div className="bg-[var(--color-liquid-blue)]/5 backdrop-blur-xl border border-[var(--color-liquid-blue)]/20 rounded-2xl p-8 shadow-2xl">
+          <div className="min-h-screen flex flex-col">
+            <div className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 md:px-8">
+              <div className="bg-[var(--color-liquid-blue)]/5 backdrop-blur-xl border border-[var(--color-liquid-blue)]/20 rounded-2xl shadow-2xl mt-6 sm:mt-0 mb-4 p-2 sm:p-4">
                 {children}
               </div>
             </div>

@@ -2,9 +2,6 @@
 
 import { ReactNode } from 'react';
 
-import Footer from './Footer';
-import Header from './Header';
-
 interface DocsPageTemplateProps {
   children: ReactNode;
   title: string;
@@ -54,15 +51,11 @@ export function Highlight({ children }: { children: ReactNode }) {
 
 export default function DocsPageTemplate({ children, title }: DocsPageTemplateProps) {
   return (
-    <>
-      <Header />
-      <div className="min-h-screen pt-24">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-white mb-8">{title}</h1>
-          {children}
-        </div>
+    <div className="min-h-screen md:pt-24 pt-4"> 
+      <div className="container mx-auto px-4">
+        <h1 className="text-4xl font-bold text-white mb-4 mt-0">{title}</h1>
+        {children}
       </div>
-      <Footer />
-    </>
+    </div>
   );
 }

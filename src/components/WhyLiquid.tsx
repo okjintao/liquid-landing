@@ -82,7 +82,7 @@ export default function WhyLiquid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="flex-1 flex flex-col items-center md:items-start"
+          className="flex-1 flex flex-col items-center md:items-start mx-4"
         >
           <div className="text-center md:text-left mb-10 w-full">
             <h2 className="text-4xl md:text-5xl font-bold font-playfair">
@@ -104,7 +104,7 @@ export default function WhyLiquid() {
                   delay: index * 0.12,
                   ease: 'easeOut',
                 }}
-                className="group bg-[#16202A]/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-500 ease-out shadow-md hover:shadow-[0_0_24px_0_rgba(46,196,241,0.2)] hover:border-[var(--color-liquid-blue)]/40 hover:bg-[#1B2736]/90 hover:scale-[1.03]"
+                className="group bg-[#16202A]/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-500 ease-out shadow-md hover:shadow-[0_0_24px_0_rgba(46,196,241,0.2)] hover:border-[var(--color-liquid-blue)]/40 hover:bg-[#1B2736]/90 hover:scale-[1.03] px-4 sm:px-0"
                 onMouseEnter={() => setShowDetails(index)}
                 onMouseLeave={() => setShowDetails(null)}
               >
@@ -133,9 +133,9 @@ export default function WhyLiquid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="flex-1 flex flex-col items-center justify-center min-h-[420px]"
+          className="flex flex-col items-center justify-center min-h-[420px] w-full px-4"
         >
-          <div className="bg-[#16202A]/80 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 text-center flex flex-col items-center w-full max-w-xs mx-auto">
+          <div className="bg-[#16202A]/80 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12 text-center flex flex-col items-center w-full">
             <Image
               src="/img/liquid-logo-glow.png"
               alt="Liquid Logo"
